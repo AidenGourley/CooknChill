@@ -13,7 +13,7 @@
             android:name=".auth.LoginActivity"
             android:label="Login"></activity>
         <activity android:name=".auth.HomeActivity" />
-        <activity android:name=".auth.MainActivity">
+        <activity android:name=".auth.SignUpActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
