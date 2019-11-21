@@ -75,7 +75,9 @@
         android:text="Welcome"
         app:autoSizeTextType="uniform"
         app:fontFamily="sans-serif-smallcaps"
-        tools:layout_editor_absoluteX="99dp"
-        tools:layout_editor_absoluteY="122dp" />
+        app:layout_constraintBottom_toTopOf="@+id/editText"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
