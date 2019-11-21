@@ -9,7 +9,11 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".MainActivity">
+        <activity
+            android:name=".auth.LoginActivity"
+            android:label="Login"></activity>
+        <activity android:name=".auth.HomeActivity" />
+        <activity android:name=".auth.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "371645976650",
+    "firebase_url": "https://cooknchill.firebaseio.com",
+    "project_id": "cooknchill",
+    "storage_bucket": "cooknchill.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:371645976650:android:df59e3b73abb54882bd6b3",
+        "android_client_info": {
+          "package_name": "com.example.cooknchill"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "371645976650-va408m19r9dhvdv6odr0nna4epg4gfi8.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAp04WhhcLxAKHFDGQ0pyM3eN_Jg_SyoKg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "371645976650-va408m19r9dhvdv6odr0nna4epg4gfi8.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
