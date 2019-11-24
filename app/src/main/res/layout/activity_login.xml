@@ -6,9 +6,46 @@
     android:layout_height="match_parent"
     tools:context="com.example.cooknchill.auth.LoginActivity">
 
+    <TextView
+        android:id="@+id/welcome"
+        android:layout_width="221dp"
+        android:layout_height="74dp"
+        android:text="Welcome"
+        app:autoSizeTextType="uniform"
+        app:fontFamily="sans-serif-smallcaps"
+        app:layout_constraintBottom_toTopOf="@+id/email"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/signup"
+        android:layout_width="171dp"
+        android:layout_height="57dp"
+        android:layout_marginEnd="16dp"
+        android:background="@color/cardview_light_background"
+        android:text="SignUp"
+        app:layout_constraintBottom_toTopOf="@+id/email"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.363"
+        app:layout_constraintStart_toEndOf="@+id/signin"
+        app:layout_constraintTop_toBottomOf="@+id/welcome" />
+
+    <Button
+        android:id="@+id/signin"
+        android:layout_width="174dp"
+        android:layout_height="57dp"
+        android:background="@color/cardview_light_background"
+        android:backgroundTint="@android:color/holo_green_light"
+        android:text="SignIn"
+        app:layout_constraintBottom_toTopOf="@+id/email"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.071"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/welcome" />
 
     <EditText
-        android:id="@+id/editText"
+        android:id="@+id/email"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="84dp"
@@ -26,7 +63,7 @@
         app:layout_constraintVertical_bias="0.628" />
 
     <EditText
-        android:id="@+id/editText2"
+        android:id="@+id/password"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="8dp"
@@ -39,23 +76,11 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editText"
+        app:layout_constraintTop_toBottomOf="@+id/email"
         app:layout_constraintVertical_bias="0.052" />
 
-    <TextView
-        android:id="@+id/textView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="136dp"
-        android:layout_marginEnd="163dp"
-        android:layout_marginStart="163dp"
-        android:text="Not registered? Sign Up here"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
-
     <Button
-        android:id="@+id/button2"
+        android:id="@+id/register"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="8dp"
@@ -63,21 +88,22 @@
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:text="Sign In"
-        app:layout_constraintBottom_toTopOf="@+id/textView"
+        app:layout_constraintBottom_toTopOf="@+id/signin2"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editText2" />
+        app:layout_constraintTop_toBottomOf="@+id/password" />
 
     <TextView
-        android:id="@+id/Welcm"
-        android:layout_width="221dp"
-        android:layout_height="74dp"
-        android:text="Welcome"
-        app:autoSizeTextType="uniform"
-        app:fontFamily="sans-serif-smallcaps"
-        app:layout_constraintBottom_toTopOf="@+id/editText"
+        android:id="@+id/signin2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="163dp"
+        android:layout_marginEnd="163dp"
+        android:layout_marginBottom="136dp"
+        android:text="Not registered? Sign Up here"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/password" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
