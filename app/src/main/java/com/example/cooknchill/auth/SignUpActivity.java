@@ -16,6 +16,7 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.FirebaseDatabase;
 
 public class SignUpActivity extends AppCompatActivity {
     EditText email, password, university, firstName, surname;
@@ -42,7 +43,7 @@ public class SignUpActivity extends AppCompatActivity {
         register.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String email = SignUpActivity.this.email.getText().toString();
+                final String email = SignUpActivity.this.email.getText().toString();
                 String pwd = password.getText().toString();
                 if(email.isEmpty()){
                     SignUpActivity.this.email.setError("Don't forget to enter your email address!");
@@ -68,7 +69,19 @@ public class SignUpActivity extends AppCompatActivity {
                                 Toast.makeText(SignUpActivity.this,"Sorry! Your sign up has been unsuccessful, please give it another go!",Toast.LENGTH_SHORT).show();
                             }
                             else {
-                                startActivity(new Intent(SignUpActivity.this,HomeActivity.class));
+                                User user = new User(university.toString(), firstName.toString(), surname.toString());
+                                FirebaseDatabase.getInstance().getReference("Users")
+                                        .child(FirebaseAuth.getInstance().getUid()).setValue(user)
+                                        .addOnCompleteListener(new OnCompleteListener<Void>(){
+                                            public void onComplete(@NonNull Task<Void> task){
+                                                if (task.isSuccessful()){
+                                                    startActivity(new Intent(SignUpActivity.this,HomeActivity.class));
+                                                }
+                                                else{
+                                                    Toast.makeText(SignUpActivity.this,"Oops, something's gone wrong... Please try again!",Toast.LENGTH_SHORT).show();
+                                                }
+                                            }
+                                        });
                             }
                         }
                     });
