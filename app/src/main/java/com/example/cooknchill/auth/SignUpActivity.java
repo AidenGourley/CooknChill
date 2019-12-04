@@ -16,6 +16,7 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
 public class SignUpActivity extends AppCompatActivity {
@@ -43,17 +44,20 @@ public class SignUpActivity extends AppCompatActivity {
         register.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                final String email = SignUpActivity.this.email.getText().toString();
-                String pwd = password.getText().toString();
+                final String email = SignUpActivity.this.email.getText().toString().trim();
+                final String password = SignUpActivity.this.password.getText().toString().trim();
+                final String university = SignUpActivity.this.university.getText().toString().trim();
+                final String firstName = SignUpActivity.this.firstName.getText().toString().trim();
+                final String surname = SignUpActivity.this.surname.getText().toString().trim();
                 if(email.isEmpty()){
                     SignUpActivity.this.email.setError("Don't forget to enter your email address!");
                     SignUpActivity.this.email.requestFocus();
                 }
-                if(firstName.getText().toString().equals("") || surname.getText().toString().equals("")){
+                if(firstName.equals("") || surname.equals("")){
                     SignUpActivity.this.firstName.setError("Don't forget to enter your name!");
                     SignUpActivity.this.firstName.requestFocus();
                 }
-                if(university.getText().toString().equals("")){
+                if(university.equals("")){
                     SignUpActivity.this.email.setError("Don't forget to enter your university!");
                     SignUpActivity.this.email.requestFocus();
                 }
@@ -61,27 +65,28 @@ public class SignUpActivity extends AppCompatActivity {
                     SignUpActivity.this.email.setError("Your email must be a valid academic email address!");
                     SignUpActivity.this.email.requestFocus();
                 }
-                else  if(!(email.isEmpty() && pwd.isEmpty())){
-                    mFirebaseAuth.createUserWithEmailAndPassword(email, pwd).addOnCompleteListener(SignUpActivity.this, new OnCompleteListener<AuthResult>() {
+                else  if(!password.isEmpty()){
+                    mFirebaseAuth.createUserWithEmailAndPassword(email, password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                         @Override
                         public void onComplete(@NonNull Task<AuthResult> task) {
-                            if(!task.isSuccessful()){
-                                Toast.makeText(SignUpActivity.this,"Sorry! Your sign up has been unsuccessful, please give it another go!",Toast.LENGTH_SHORT).show();
+                            if (task.isSuccessful()) {
+                                String uid = FirebaseAuth.getInstance().getCurrentUser().getUid();
+                                DatabaseReference dbRef = FirebaseDatabase.getInstance().getReference("users").child(uid);
+                                User user = new User(uid, university, firstName, surname);
+
+                                dbRef.setValue(user).addOnCompleteListener(new OnCompleteListener<Void>() {
+                                    @Override
+                                    public void onComplete(@NonNull Task<Void> task) {
+                                        if (task.isSuccessful()) {
+                                            startActivity(new Intent(SignUpActivity.this, SignUp2Activity.class));
+                                        } else {
+                                            Toast.makeText(SignUpActivity.this, "Oops, something's gone wrong... Please try again!", Toast.LENGTH_SHORT).show();
+                                        }
+                                    }
+                                });
                             }
-                            else {
-                                User user = new User(university.toString(), firstName.toString(), surname.toString());
-                                FirebaseDatabase.getInstance().getReference("Users")
-                                        .child(FirebaseAuth.getInstance().getUid()).setValue(user)
-                                        .addOnCompleteListener(new OnCompleteListener<Void>(){
-                                            public void onComplete(@NonNull Task<Void> task){
-                                                if (task.isSuccessful()){
-                                                    startActivity(new Intent(SignUpActivity.this,HomeActivity.class));
-                                                }
-                                                else{
-                                                    Toast.makeText(SignUpActivity.this,"Oops, something's gone wrong... Please try again!",Toast.LENGTH_SHORT).show();
-                                                }
-                                            }
-                                        });
+                            else{
+                                Toast.makeText(SignUpActivity.this, "Oops, something's gone wrong... Please try again!", Toast.LENGTH_SHORT).show();
                             }
                         }
                     });
