@@ -11,8 +11,8 @@
 
     <Button
         android:id="@+id/bio_cancel_icon4"
-        android:layout_width="19dp"
-        android:layout_height="26dp"
+        android:layout_width="19sp"
+        android:layout_height="26sp"
         android:background="@drawable/bio_x_icon"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -24,8 +24,8 @@
 
     <EditText
         android:id="@+id/editText11"
-        android:layout_width="278dp"
-        android:layout_height="38dp"
+        android:layout_width="278sp"
+        android:layout_height="38sp"
         android:ems="10"
         android:inputType="textPersonName"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -37,8 +37,8 @@
 
     <Button
         android:id="@+id/bio_cancel_icon3"
-        android:layout_width="19dp"
-        android:layout_height="26dp"
+        android:layout_width="19sp"
+        android:layout_height="26sp"
         android:background="@drawable/bio_x_icon"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -66,8 +66,8 @@
 
     <Spinner
         android:id="@+id/sex_spinner"
-        android:layout_width="14dp"
-        android:layout_height="22dp"
+        android:layout_width="14sp"
+        android:layout_height="22sp"
         android:layout_marginBottom="16dp"
         android:background="@drawable/birthday_dropdown"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -80,8 +80,8 @@
 
     <Button
         android:id="@+id/email_x_icon"
-        android:layout_width="19dp"
-        android:layout_height="26dp"
+        android:layout_width="19sp"
+        android:layout_height="26sp"
         android:background="@drawable/bio_x_icon"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -94,8 +94,8 @@
 
     <Button
         android:id="@+id/username_x_icon"
-        android:layout_width="19dp"
-        android:layout_height="26dp"
+        android:layout_width="19sp"
+        android:layout_height="26sp"
         android:background="@drawable/bio_x_icon"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -135,10 +135,10 @@
         android:background="@drawable/camera_icon"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.58"
+        app:layout_constraintHorizontal_bias="0.615"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.209"
+        app:layout_constraintVertical_bias="0.223"
         tools:ignore="MissingConstraints" />
 
     <Button
@@ -169,8 +169,8 @@
 
     <Button
         android:id="@+id/bio_cancel_icon"
-        android:layout_width="19dp"
-        android:layout_height="26dp"
+        android:layout_width="19sp"
+        android:layout_height="26sp"
         android:background="@drawable/bio_x_icon"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -183,8 +183,8 @@
 
     <TextView
         android:id="@+id/Bio_View"
-        android:layout_width="32dp"
-        android:layout_height="25dp"
+        android:layout_width="32sp"
+        android:layout_height="25sp"
         android:text="Bio"
         android:textSize="17dp"
         android:textStyle="italic"
@@ -198,7 +198,7 @@
 
     <EditText
         android:id="@+id/BioText"
-        android:layout_width="275dp"
+        android:layout_width="275sp"
         android:layout_height="38dp"
         android:layout_marginStart="28dp"
         android:ems="10"
@@ -215,17 +215,17 @@
         android:id="@+id/Personal_Title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
+        android:layout_marginStart="8sp"
         android:text="PERSONAL"
         android:textColor="#5E2424"
-        android:textSize="20dp"
+        android:textSize="20sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.519"
+        app:layout_constraintHorizontal_bias="0.476"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.356"
+        app:layout_constraintVertical_bias="0.377"
         tools:ignore="MissingConstraints" />
 
     <TextView
@@ -233,7 +233,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Email"
-        android:textSize="17dp"
+        android:textSize="17sp"
         android:textStyle="italic"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -290,7 +290,7 @@
         android:id="@+id/BirthDate"
         android:layout_width="143sp"
         android:layout_height="40sp"
-        android:layout_marginStart="72dp"
+        android:layout_marginStart="72sp"
         android:ems="10"
         android:inputType="date"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -302,9 +302,9 @@
 
     <Spinner
         android:id="@+id/Gender_spinner"
-        android:layout_width="14dp"
-        android:layout_height="22dp"
-        android:layout_marginBottom="16dp"
+        android:layout_width="14sp"
+        android:layout_height="22sp"
+        android:layout_marginBottom="16sp"
         android:background="@drawable/birthday_dropdown"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -316,12 +316,12 @@
 
     <EditText
         android:id="@+id/Gender_Text"
-        android:layout_width="125dp"
-        android:layout_height="40dp"
+        android:layout_width="125sp"
+        android:layout_height="40sp"
         android:ems="10"
         android:inputType="textPersonName"
         android:text="Gender"
-        android:textSize="17dp"
+        android:textSize="17sp"
         android:textStyle="italic"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -336,7 +336,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Name"
-        android:textSize="17dp"
+        android:textSize="17sp"
         android:textStyle="italic"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -348,8 +348,8 @@
 
     <EditText
         android:id="@+id/name_edit_text"
-        android:layout_width="278dp"
-        android:layout_height="38dp"
+        android:layout_width="278sp"
+        android:layout_height="38sp"
         android:ems="10"
         android:inputType="textPersonName"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -376,9 +376,9 @@
         android:id="@+id/switch_accounts"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="48dp"
+        android:layout_marginEnd="48sp"
         android:text="Switch Accounts"
-        android:textSize="17dp"
+        android:textSize="17sp"
         android:textStyle="italic"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -393,7 +393,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="BirthDate"
-        android:textSize="17dp"
+        android:textSize="17sp"
         android:textStyle="italic"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
