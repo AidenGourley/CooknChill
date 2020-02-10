@@ -1,8 +1,8 @@
 <resources>
     <string name="app_name">My Application</string>
     <string-array name="universities">
-        <item></item>
+        <item>Select University</item>
         <item>Oxford Brookes University</item>
-        <item>Cambrigde University</item>
+        <item>Cambridge University</item>
     </string-array>
 </resources>

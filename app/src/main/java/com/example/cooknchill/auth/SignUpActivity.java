@@ -8,8 +8,6 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 import android.widget.Spinner;
-import android.widget.AdapterView;//
-import android.widget.ArrayAdapter;//
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -24,7 +22,7 @@ import com.google.firebase.database.FirebaseDatabase;
 
 public class SignUpActivity extends AppCompatActivity {
     EditText email, password, firstName, surname;
-    Spinner university;
+    Spinner uniChoice;
     Button register, signIn;
     TextView signIn2;
     FirebaseAuth mFirebaseAuth;
@@ -36,7 +34,7 @@ public class SignUpActivity extends AppCompatActivity {
 
         mFirebaseAuth = FirebaseAuth.getInstance();
         email = findViewById(R.id.email);
-        university = findViewById(R.id.university);
+        uniChoice = findViewById(R.id.university);
         firstName = findViewById(R.id.firstName);
         surname = findViewById(R.id.surname);
         password = findViewById(R.id.password);
@@ -44,31 +42,37 @@ public class SignUpActivity extends AppCompatActivity {
         signIn2 = findViewById(R.id.signin2);
         signIn = findViewById(R.id.signin);
 
+        /**
+        university.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                Toast.makeText(SignUpActivity.this, "You Select Position: ", Toast.LENGTH_SHORT).show();
+                selectedUni. = parent.getItemAtPosition(position).toString();
+            }
+        });
+        **/
 
         register.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 final String email = SignUpActivity.this.email.getText().toString().trim();
                 final String password = SignUpActivity.this.password.getText().toString().trim();
-                final String university = SignUpActivity.this.university.getText().toString().trim();
-                //
-                university.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-                    @Override
-                    public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                        Toast.makeText(MainActivity.this, "You Select Position: "+position+" "+fruits[position], Toast.LENGTH_SHORT).show();
-                    }});
-                    //
+                final String university = uniChoice.getSelectedItem().toString().trim();
                 final String firstName = SignUpActivity.this.firstName.getText().toString().trim();
                 final String surname = SignUpActivity.this.surname.getText().toString().trim();
-                if(email.isEmpty()){
+                if(university.contentEquals("Select University")){
+                    SignUpActivity.this.register.setError("Don't forget to enter your university!");
+                    SignUpActivity.this.uniChoice.requestFocus();
+                }
+                else if(email.isEmpty()){
                     SignUpActivity.this.email.setError("Don't forget to enter your email address!");
                     SignUpActivity.this.email.requestFocus();
                 }
-                if(firstName.equals("") || surname.equals("")){
+                else if(firstName.equals("") || surname.equals("")){
                     SignUpActivity.this.firstName.setError("Don't forget to enter your name!");
                     SignUpActivity.this.firstName.requestFocus();
                 }
-                if(university.equals("")){
+                else if(university.equals("")){
                     SignUpActivity.this.email.setError("Don't forget to enter your university!");
                     SignUpActivity.this.email.requestFocus();
                 }
