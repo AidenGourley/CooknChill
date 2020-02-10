@@ -28,7 +28,8 @@ public class EditProfileActivity extends AppCompatActivity {
         btnChangePicture.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //UserProfileChangeRequest profileUpdates = new UserProfileChangeRequest.Builder().setPhotoUri(Uri.fromFile())
+                //UserProfileChangeRequest profileUpdates = new UserProfileChangeRequest.Builder()
+                //.setPhotoUri(Uri.fromFile()).build();
                 //user.updateProfile()
             }
         });

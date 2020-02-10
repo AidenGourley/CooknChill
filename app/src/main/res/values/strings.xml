@@ -1,3 +1,8 @@
 <resources>
-    <string name="app_name">failedlogin</string>
+    <string name="app_name">My Application</string>
+    <string-array name="universities">
+        <item>Select University</item>
+        <item>Oxford Brookes University</item>
+        <item>Cambridge University</item>
+    </string-array>
 </resources>
