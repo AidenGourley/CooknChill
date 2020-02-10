@@ -4,132 +4,226 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.example.cooknchill.auth.SignUpActivity">
-
+    tools:context="com.example.cooknchill.auth.MainActivity">
 
     <TextView
-        android:id="@+id/welcome"
-        android:layout_width="221dp"
-        android:layout_height="74dp"
-        android:text="Welcome"
-        app:autoSizeTextType="uniform"
-        app:fontFamily="sans-serif-smallcaps"
+        android:id="@+id/textView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/publicasans"
+        android:text="COOK N' CHILL"
+        android:textColor="#FF344C"
+        android:textSize="30dp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <Button
-        android:id="@+id/signup"
-        android:layout_width="171dp"
-        android:layout_height="57dp"
-        android:background="@color/cardview_light_background"
-        android:backgroundTint="@android:color/holo_green_light"
-        android:text="SignUp"
-        app:layout_constraintBottom_toTopOf="@+id/firstName"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toEndOf="@+id/signin"
-        app:layout_constraintTop_toBottomOf="@+id/welcome" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.043" />
 
     <Button
         android:id="@+id/signin"
-        android:layout_width="174dp"
-        android:layout_height="57dp"
-        android:layout_marginStart="32dp"
-        android:background="@color/cardview_light_background"
-        android:text="SignIn"
-        app:layout_constraintBottom_toTopOf="@+id/firstName"
+        android:layout_width="200dp"
+        android:layout_height="50dp"
+        android:background="@android:color/transparent"
+        android:fontFamily="@font/poppinslight"
+        android:stateListAnimator="@null"
+        android:text="Login"
+        android:textAllCaps="false"
+        android:textSize="16dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/welcome" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.135" />
 
-    <EditText
-        android:id="@+id/firstName"
+    <Button
+        android:id="@+id/signup"
+        android:layout_width="200dp"
+        android:layout_height="50dp"
+        android:background="@android:color/transparent"
+        android:fontFamily="@font/poppins"
+        android:stateListAnimator="@null"
+        android:text="Sign Up"
+        android:textAllCaps="false"
+        android:textSize="16dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.135" />
+
+
+    <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:ems="10"
-        android:hint="First Name"
-        android:inputType="textPersonName"
-        app:layout_constraintBottom_toTopOf="@+id/university"
+        android:layout_marginEnd="116dp"
+        android:fontFamily="@font/poppinsbold"
+        android:text="Sign Up"
+        android:textColor="#1A1A1A"
+        android:textSize="49dp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/welcome" />
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.223" />
+
+    <ImageView
+        android:layout_width="400dp"
+        android:layout_height="0dp"
+        app:srcCompat="@drawable/path_2467"
+        tools:layout_editor_absoluteX="95dp"
+        tools:layout_editor_absoluteY="142dp" />
+
+    <ImageView
+        android:layout_width="400dp"
+        android:layout_height="0dp"
+        app:srcCompat="@drawable/path_2467"
+        tools:layout_editor_absoluteX="143dp"
+        tools:layout_editor_absoluteY="142dp" />
+
+
+    <ImageView
+        android:layout_width="360dp"
+        android:layout_height="219dp"
+        app:srcCompat="@drawable/group_16"
+        tools:layout_editor_absoluteX="25dp"
+        tools:layout_editor_absoluteY="217dp" />
 
     <EditText
         android:id="@+id/surname"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="4dp"
-        android:ems="10"
+        android:layout_width="291dp"
+        android:layout_height="47dp"
+        android:background="@android:color/white"
+        android:fontFamily="@font/poppinslight"
         android:hint="Surname"
-        android:inputType="textPersonName"
-        app:layout_constraintBottom_toTopOf="@+id/university"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/firstName" />
+        android:textSize="15dp"
+        tools:layout_editor_absoluteX="60dp"
+        tools:layout_editor_absoluteY="298dp" />
+
+    <ImageView
+        android:layout_width="360dp"
+        android:layout_height="219dp"
+        app:srcCompat="@drawable/group_16"
+        tools:layout_editor_absoluteX="25dp"
+        tools:layout_editor_absoluteY="155dp" />
+
+    <EditText
+        android:id="@+id/firstName"
+        android:layout_width="291dp"
+        android:layout_height="47dp"
+        android:background="@android:color/white"
+        android:fontFamily="@font/poppinslight"
+        android:hint="First Name"
+        android:textSize="15dp"
+        tools:layout_editor_absoluteX="60dp"
+        tools:layout_editor_absoluteY="234dp" />
+
+    <ImageView
+        android:layout_width="360dp"
+        android:layout_height="219dp"
+        app:srcCompat="@drawable/group_16"
+        tools:layout_editor_absoluteX="25dp"
+        tools:layout_editor_absoluteY="281dp" />
+
+    <Spinner
+        android:id="@+id/university"
+        android:layout_width="166dp"
+        android:layout_height="24dp"
+        android:entries="@array/universities"
+        android:fontFamily="@font/poppins"
+        tools:layout_editor_absoluteX="185dp"
+        tools:layout_editor_absoluteY="374dp"
+
+        >
+
+    </Spinner>
+
+    <TextView
+        android:layout_width="291dp"
+        android:layout_height="47dp"
+        android:fontFamily="@font/poppinslight"
+        android:text="University:"
+        android:textSize="15dp"
+        tools:layout_editor_absoluteX="61dp"
+        tools:layout_editor_absoluteY="374dp" />
+
+    <ImageView
+        android:layout_width="360dp"
+        android:layout_height="219dp"
+        app:srcCompat="@drawable/group_16"
+        tools:layout_editor_absoluteX="25dp"
+        tools:layout_editor_absoluteY="345dp" />
 
     <EditText
         android:id="@+id/email"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="24dp"
-        android:ems="10"
-        android:hint="Email"
-        android:inputType="textEmailAddress"
-        app:layout_constraintBottom_toTopOf="@+id/password"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/university"
-        app:layout_constraintVertical_bias="1.0" />
+        android:layout_width="291dp"
+        android:layout_height="47dp"
+        android:background="@android:color/white"
+        android:fontFamily="@font/poppinslight"
+        android:hint="Email Address"
+        android:textSize="15dp"
+        tools:layout_editor_absoluteX="60dp"
+        tools:layout_editor_absoluteY="421dp" />
+
+    <ImageView
+        android:layout_width="360dp"
+        android:layout_height="219dp"
+        app:srcCompat="@drawable/group_16"
+        tools:layout_editor_absoluteX="25dp"
+        tools:layout_editor_absoluteY="409dp" />
 
     <EditText
         android:id="@+id/password"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="24dp"
-        android:ems="10"
+        android:layout_width="291dp"
+        android:layout_height="47dp"
+        android:background="@android:color/white"
+        android:fontFamily="@font/poppinslight"
         android:hint="Password"
-        android:inputType="textPassword"
-        app:layout_constraintBottom_toTopOf="@+id/register"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/university" />
-
-    <EditText
-        android:id="@+id/university"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="24dp"
-        android:ems="10"
-        android:hint="University"
-        android:inputType="textPhonetic"
-        app:layout_constraintBottom_toTopOf="@+id/register"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/welcome"
-        app:layout_constraintVertical_bias="0.468" />
+        android:textSize="15dp"
+        tools:layout_editor_absoluteX="60dp"
+        tools:layout_editor_absoluteY="488dp" />
 
     <Button
-        android:id="@+id/register"
-        android:layout_width="184dp"
-        android:layout_height="43dp"
-        android:layout_marginBottom="40dp"
-        android:text="Register"
-        app:layout_constraintBottom_toTopOf="@+id/signin2"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
-        app:layout_constraintStart_toStartOf="parent" />
-
-    <TextView
-        android:id="@+id/signin2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="163dp"
-        android:layout_marginEnd="163dp"
-        android:layout_marginBottom="28dp"
-        android:text="Already have an account? Sign in here"
+        android:id="@+id/signup2"
+        android:layout_width="300dp"
+        android:layout_height="52dp"
+        android:background="@drawable/custombutton"
+        android:fontFamily="@font/poppisnmedium"
+        android:gravity="center"
+        android:paddingLeft="10dp"
+        android:text="SIGN UP"
+        android:textAllCaps="false"
+        android:textColor="@android:color/white"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintHorizontal_bias="0.495"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.82" />
+
+    <ImageView
+        android:layout_width="299dp"
+        android:layout_height="1dp"
+        android:background="@drawable/line_3"
+        tools:layout_editor_absoluteX="61dp"
+        tools:layout_editor_absoluteY="659dp" />
+
+    <ImageView
+        android:layout_width="120dp"
+        android:layout_height="70dp"
+        android:background="@drawable/union_2"
+        tools:layout_editor_absoluteX="136dp"
+        tools:layout_editor_absoluteY="659dp" />
+
+
+
+
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

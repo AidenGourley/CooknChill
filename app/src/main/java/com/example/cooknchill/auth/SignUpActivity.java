@@ -7,6 +7,9 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
+import android.widget.Spinner;
+import android.widget.AdapterView;//
+import android.widget.ArrayAdapter;//
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -20,7 +23,8 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
 public class SignUpActivity extends AppCompatActivity {
-    EditText email, password, university, firstName, surname;
+    EditText email, password, firstName, surname;
+    Spinner university;
     Button register, signIn;
     TextView signIn2;
     FirebaseAuth mFirebaseAuth;
@@ -47,6 +51,13 @@ public class SignUpActivity extends AppCompatActivity {
                 final String email = SignUpActivity.this.email.getText().toString().trim();
                 final String password = SignUpActivity.this.password.getText().toString().trim();
                 final String university = SignUpActivity.this.university.getText().toString().trim();
+                //
+                university.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+                    @Override
+                    public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                        Toast.makeText(MainActivity.this, "You Select Position: "+position+" "+fruits[position], Toast.LENGTH_SHORT).show();
+                    }});
+                    //
                 final String firstName = SignUpActivity.this.firstName.getText().toString().trim();
                 final String surname = SignUpActivity.this.surname.getText().toString().trim();
                 if(email.isEmpty()){
