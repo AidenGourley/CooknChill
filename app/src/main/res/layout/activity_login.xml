@@ -28,11 +28,11 @@
         app:layout_constraintBottom_toTopOf="@+id/email"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.363"
-        app:layout_constraintStart_toEndOf="@+id/signin"
+        app:layout_constraintStart_toEndOf="@+id/signup"
         app:layout_constraintTop_toBottomOf="@+id/welcome" />
 
     <Button
-        android:id="@+id/signin"
+        android:id="@+id/signup"
         android:layout_width="174dp"
         android:layout_height="57dp"
         android:background="@color/cardview_light_background"

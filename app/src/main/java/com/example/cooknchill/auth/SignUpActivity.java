@@ -38,7 +38,7 @@ public class SignUpActivity extends AppCompatActivity {
         password = findViewById(R.id.password);
         register = findViewById(R.id.register);
         signIn2 = findViewById(R.id.signin2);
-        signIn = findViewById(R.id.signin);
+        signIn = findViewById(R.id.signup);
 
 
         register.setOnClickListener(new View.OnClickListener() {

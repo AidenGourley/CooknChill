@@ -14,6 +14,10 @@
             android:label="@string/title_activity_edit_profile"></activity>
         <activity android:name=".auth.SignUp2Activity" />
         <activity
+            android:name=".auth.ProfilePage"
+            android:label="@string/title_activity_profile_page"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
+        <activity
             android:name=".auth.LoginActivity"
             android:label="Login" />
         <activity android:name=".auth.HomeActivity" />

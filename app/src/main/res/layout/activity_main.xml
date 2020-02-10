@@ -11,18 +11,19 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:fontFamily="@font/publicasans"
-        android:text="COOK N' CHILL"
+        android:text="COOK' N' CHILL"
         android:textColor="#FF344C"
         android:textSize="30"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/button5"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.518"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.209" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <Button
+        android:id="@+id/button5"
         android:layout_width="200dp"
         android:layout_height="50dp"
         android:background="@android:color/transparent"
@@ -36,9 +37,11 @@
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.356" />
+        app:layout_constraintVertical_bias="0.258" />
+
 
     <Button
+        android:id="@+id/button6"
         android:layout_width="200dp"
         android:layout_height="50dp"
         android:background="@android:color/transparent"
@@ -52,85 +55,70 @@
         app:layout_constraintHorizontal_bias="0.947"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.356" />
+        app:layout_constraintVertical_bias="0.258" />
 
     <TextView
+        android:id="@+id/textView3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="128dp"
+        android:layout_marginTop="36dp"
         android:fontFamily="@font/poppinsbold"
         android:text="Welcome"
         android:textColor="#1A1A1A"
         android:textSize="49dp"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/textView"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.449" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/button6"
+        app:layout_constraintVertical_bias="0.0" />
 
     <TextView
         android:id="@+id/textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="24dp"
         android:fontFamily="@font/poppinslight"
         android:text="You can now enter your credentials to login to \nCook N' Chill and start exploring the cooking world!"
         android:textColor="#1A1A1A"
         android:textSize="12dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintHorizontal_bias="0.39"
+        app:layout_constraintBottom_toTopOf="@+id/email"
+        app:layout_constraintHorizontal_bias="0.495"
         app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.537" />
-
-    <ImageView
-        android:layout_width="300dp"
-        android:layout_height=""
-        app:srcCompat="@drawable/path_2467"
-        tools:layout_editor_absoluteX="-67dp"
-        tools:layout_editor_absoluteY="289dp" />
-
-
-    <ImageView
-        android:layout_width="360dp"
-        android:layout_height="219dp"
-        app:srcCompat="@drawable/group_16"
-        tools:layout_editor_absoluteX="25dp"
-        tools:layout_editor_absoluteY="355dp" />
+        app:layout_constraintRight_toRightOf="parent" />
 
     <EditText
+        android:id="@+id/email"
         android:layout_width="291dp"
         android:layout_height="47dp"
+        android:layout_marginBottom="20dp"
         android:background="@android:color/white"
+        android:fontFamily="@font/poppinslight"
         android:hint="Email Address"
         android:textSize="15dp"
-        android:fontFamily="@font/poppinslight"
-        tools:layout_editor_absoluteX="61dp"
-        tools:layout_editor_absoluteY="434dp" />
-
-    <ImageView
-        android:layout_width="360dp"
-        android:layout_height="219dp"
-        app:srcCompat="@drawable/group_16"
-        tools:layout_editor_absoluteX="25dp"
-        tools:layout_editor_absoluteY="417dp" />
+        app:layout_constraintBottom_toTopOf="@+id/password"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.433"
+        app:layout_constraintStart_toStartOf="parent" />
 
     <EditText
+        android:id="@+id/password"
         android:layout_width="291dp"
         android:layout_height="47dp"
+        android:layout_marginBottom="20dp"
         android:background="@android:color/white"
+        android:fontFamily="@font/poppinslight"
         android:hint="Password"
         android:textSize="15dp"
-        android:fontFamily="@font/poppinslight"
-        tools:layout_editor_absoluteX="61dp"
-        tools:layout_editor_absoluteY="498dp" />
+        app:layout_constraintBottom_toTopOf="@+id/register"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.433"
+        app:layout_constraintStart_toStartOf="parent" />
 
     <Button
-        android:id="@+id/button3"
+        android:id="@+id/register"
         android:layout_width="300dp"
         android:layout_height="52dp"
+        android:layout_marginBottom="40dp"
         android:background="@drawable/custombutton"
         android:fontFamily="@font/poppisnmedium"
         android:gravity="center"
@@ -138,54 +126,22 @@
         android:text="LOGIN"
         android:textAllCaps="false"
         android:textColor="@android:color/white"
+        app:layout_constraintBottom_toTopOf="@+id/imageView6"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.468"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <ImageView
+        android:id="@+id/imageView6"
+        android:layout_width="126dp"
+        android:layout_height="59dp"
+        android:layout_marginEnd="88dp"
+        android:layout_marginBottom="28dp"
+        android:background="@drawable/union_2"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.495"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.82" />
-
-    <Button
-        android:layout_width="200dp"
-        android:layout_height="50dp"
-        android:background="@android:color/transparent"
-        android:fontFamily="@font/poppinslight"
-        android:stateListAnimator="@null"
-        android:text="Forgot Password?"
-        android:textAllCaps="false"
-        android:textColor="#1F54C3"
-        android:textSize="14dp"
-        tools:layout_editor_absoluteX="16dp"
-        tools:layout_editor_absoluteY="599dp" />
-
-    <ImageView
-        android:layout_width="299dp"
-        android:layout_height="1dp"
-        android:background="@drawable/line_3"
-        tools:layout_editor_absoluteX="61dp"
-        tools:layout_editor_absoluteY="659dp" />
-
-    <ImageView
-        android:layout_width="120dp"
-        android:layout_height="70dp"
-        android:background="@drawable/union_2"
-        tools:layout_editor_absoluteX="136dp"
-        tools:layout_editor_absoluteY="659dp" />
-
-    <ImageView
-        android:layout_width="24dp"
-        android:layout_height="15dp"
-        android:background="@drawable/eye"
-        tools:layout_editor_absoluteX="316dp"
-        tools:layout_editor_absoluteY="515dp" />
-
-    <Button
-        android:layout_width="24dp"
-        android:layout_height="15dp"
-        android:background="@android:color/transparent"
-        android:stateListAnimator="@null"
-        tools:layout_editor_absoluteX="316dp"
-        tools:layout_editor_absoluteY="515dp" />
+        app:layout_constraintHorizontal_bias="0.72"
+        app:layout_constraintStart_toStartOf="parent" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

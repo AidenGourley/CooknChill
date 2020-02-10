@@ -28,11 +28,11 @@
         app:layout_constraintBottom_toTopOf="@+id/firstName"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toEndOf="@+id/signin"
+        app:layout_constraintStart_toEndOf="@+id/signup"
         app:layout_constraintTop_toBottomOf="@+id/welcome" />
 
     <Button
-        android:id="@+id/signin"
+        android:id="@+id/signup"
         android:layout_width="174dp"
         android:layout_height="57dp"
         android:layout_marginStart="32dp"
@@ -43,7 +43,7 @@
         app:layout_constraintTop_toBottomOf="@+id/welcome" />
 
     <EditText
-        android:id="@+id/firstName"
+        android:id="@+id/firstName2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:ems="10"
@@ -79,20 +79,18 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/university"
-        app:layout_constraintVertical_bias="1.0" />
+        app:layout_constraintVertical_bias="0.168" />
 
     <EditText
         android:id="@+id/password"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="24dp"
+        android:layout_marginStart="92dp"
         android:ems="10"
         android:hint="Password"
         android:inputType="textPassword"
-        app:layout_constraintBottom_toTopOf="@+id/register"
-        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/university" />
+        tools:layout_editor_absoluteY="458dp" />
 
     <EditText
         android:id="@+id/university"
