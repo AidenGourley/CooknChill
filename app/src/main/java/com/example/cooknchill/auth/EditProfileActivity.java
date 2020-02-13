@@ -52,7 +52,7 @@ public class EditProfileActivity extends AppCompatActivity {
             progressDialog.setTitle("Uploading...");
             progressDialog.show();
 
-            StorageReference ref = storageReference.child("images/"+ FirebaseAuth.getInstance().getCurrentUser().getUid());
+            StorageReference ref = storageReference.child("images/"+ user.getUid());
             ref.putFile(filePath)
                     .addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
                         @Override
