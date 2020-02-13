@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Spinner;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -19,12 +20,14 @@ import com.google.firebase.database.FirebaseDatabase;
 
 public class SignUp2Activity extends AppCompatActivity {
     EditText course, courseDuration;
+    Spinner chooseNationality;
 
     Button confirm;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_signup2);
+        chooseNationality = findViewById(R.id.chooseNationality);
         course = findViewById(R.id.course);
         courseDuration = findViewById(R.id.courseDuration);
         confirm = findViewById(R.id.confirm);
@@ -34,10 +37,12 @@ public class SignUp2Activity extends AppCompatActivity {
             public void onClick(View v) {
                 final String course = SignUp2Activity.this.course.getText().toString().trim();
                 final String courseDuration = SignUp2Activity.this.courseDuration.getText().toString().trim();
+                final String nationality = SignUp2Activity.this.chooseNationality.toString().trim();
                 if (!(course.isEmpty() && courseDuration.isEmpty())){
                     String uid = FirebaseAuth.getInstance().getCurrentUser().getUid();
                     DatabaseReference dbRef = FirebaseDatabase.getInstance().getReference("users").child(uid);
                     dbRef.child("courseDuration").setValue(courseDuration);
+                    dbRef.child("nationality").setValue(nationality);
                     dbRef.child("course").setValue(course).addOnCompleteListener(new OnCompleteListener<Void>() {
                         @Override
                         public void onComplete(@NonNull Task<Void> task) {

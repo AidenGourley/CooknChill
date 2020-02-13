@@ -1,8 +1,17 @@
 <resources>
-    <string name="app_name">My Application</string>
+    <string name="app_name">Cook n Chill</string>
     <string-array name="universities">
         <item>Select University</item>
         <item>Oxford Brookes University</item>
         <item>Cambridge University</item>
+    </string-array>
+
+    <string-array name="nationalities">
+        <item>Select Nationality</item>
+        <item>United Kingdom</item>
+        <item>Bangladesh</item>
+        <item>Pakistan</item>
+        <item>Italy</item>
+        <item>Uganda</item>
     </string-array>
 </resources>

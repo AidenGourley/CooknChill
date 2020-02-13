@@ -12,5 +12,7 @@ public class User {
         this.university = university;
         this.firstName = firstName;
         this.surname = surname;
+        this.course = "";
+        this.courseDuration = 1;
     }
 }
