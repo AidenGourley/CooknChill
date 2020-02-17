@@ -24,7 +24,6 @@ public class SignUpActivity extends AppCompatActivity {
     EditText email, password, firstName, surname;
     Spinner uniChoice;
     Button register, signIn;
-    TextView signIn2;
     FirebaseAuth mFirebaseAuth;
 
     @Override
@@ -39,8 +38,7 @@ public class SignUpActivity extends AppCompatActivity {
         surname = findViewById(R.id.surname);
         password = findViewById(R.id.password);
         register = findViewById(R.id.register);
-        signIn2 = findViewById(R.id.signin2);
-        signIn = findViewById(R.id.signin);
+        signIn = findViewById(R.id.signup);
 
         /**
         university.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
@@ -113,13 +111,6 @@ public class SignUpActivity extends AppCompatActivity {
             }
         });
 
-        signIn2.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent i = new Intent(SignUpActivity.this,LoginActivity.class);
-                startActivity(i);
-            }
-        });
 
         signIn.setOnClickListener(new View.OnClickListener() {
             @Override

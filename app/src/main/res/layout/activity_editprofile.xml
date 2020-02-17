@@ -5,8 +5,22 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:alpha="0.92"
-    tools:context="com.example.cooknchill.auth.editprofile">
+    android:background="@android:color/background_light"
+    tools:context="com.example.cooknchill.auth.EditProfileActivity">
 
+
+    <Button
+        android:id="@+id/bio_cancel_icon4"
+        android:layout_width="19sp"
+        android:layout_height="26sp"
+        android:background="@drawable/bio_x_icon"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.841"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.781"
+        tools:ignore="MissingConstraints" />
 
     <EditText
         android:id="@+id/editText11"
@@ -39,7 +53,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="CONTACT"
-        android:textColor="#5E2424"
+        android:textColor="#0C0B0B"
         android:textSize="20dp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -103,7 +117,7 @@
         app:layout_constraintVertical_bias="0.008" />
 
     <ImageView
-        android:id="@+id/imgView"
+        android:id="@+id/profile_picture"
         android:layout_width="135sp"
         android:layout_height="165sp"
         android:src="@drawable/camera_circle"
@@ -115,29 +129,16 @@
         tools:ignore="MissingConstraints" />
 
     <Button
-        android:id="@+id/uploadProfilePicture"
-        android:layout_width="34sp"
-        android:layout_height="34sp"
-        android:background="@drawable/submit_icon"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.642"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.219"
-        tools:ignore="MissingConstraints" />
-
-    <Button
-        android:id="@+id/chooseProfilePicture"
+        android:id="@+id/camera_icon"
         android:layout_width="34sp"
         android:layout_height="34sp"
         android:background="@drawable/camera_icon"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.357"
+        app:layout_constraintHorizontal_bias="0.615"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.219"
+        app:layout_constraintVertical_bias="0.223"
         tools:ignore="MissingConstraints" />
 
     <Button
@@ -154,7 +155,7 @@
         tools:ignore="MissingConstraints" />
 
     <Button
-        android:id="@+id/submit"
+        android:id="@+id/submit_button"
         android:layout_width="30sp"
         android:layout_height="29sp"
         android:background="@drawable/submit_icon"
@@ -216,7 +217,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="8sp"
         android:text="PERSONAL"
-        android:textColor="#5E2424"
+        android:textColor="#0A0A0A"
         android:textSize="20sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -243,7 +244,7 @@
         tools:ignore="MissingConstraints" />
 
     <EditText
-        android:id="@+id/changeEmail"
+        android:id="@+id/email_search"
         android:layout_width="277sp"
         android:layout_height="38sp"
         android:layout_marginBottom="376dp"
@@ -334,7 +335,7 @@
         android:id="@+id/name_text_view"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Nationality"
+        android:text="Name"
         android:textSize="17sp"
         android:textStyle="italic"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -344,6 +345,19 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.745"
         tools:ignore="InvalidId,MissingConstraints" />
+
+    <EditText
+        android:id="@+id/name_edit_text"
+        android:layout_width="278sp"
+        android:layout_height="38sp"
+        android:ems="10"
+        android:inputType="textPersonName"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.526"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.795" />
 
     <TextView
         android:id="@+id/Phone_Number"
@@ -387,14 +401,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.596" />
-
-    <Spinner
-        android:id="@+id/chooseNationality"
-        android:entries="@array/nationalities"
-        android:layout_width="239dp"
-        android:layout_height="31dp"
-        tools:layout_editor_absoluteX="58dp"
-        tools:layout_editor_absoluteY="564dp" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
