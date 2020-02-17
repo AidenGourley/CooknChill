@@ -154,7 +154,7 @@
         tools:ignore="MissingConstraints" />
 
     <Button
-        android:id="@+id/submit_button"
+        android:id="@+id/submit"
         android:layout_width="30sp"
         android:layout_height="29sp"
         android:background="@drawable/submit_icon"
@@ -243,7 +243,7 @@
         tools:ignore="MissingConstraints" />
 
     <EditText
-        android:id="@+id/email_search"
+        android:id="@+id/changeEmail"
         android:layout_width="277sp"
         android:layout_height="38sp"
         android:layout_marginBottom="376dp"

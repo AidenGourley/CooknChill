@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.provider.MediaStore;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageView;
 
 import androidx.annotation.NonNull;
@@ -15,8 +16,10 @@ import android.app.ProgressDialog;
 import android.widget.Toast;
 
 import com.example.cooknchill.R;
+import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.storage.OnProgressListener;
@@ -30,8 +33,9 @@ public class EditProfileActivity extends AppCompatActivity {
     FirebaseStorage storage;
     StorageReference storageReference;
     Uri filePath;
-    Button btnChoose, btnUpload;
+    Button btnChoose, btnUpload, btnSubmit;
     ImageView imageView;
+    EditText changeEmail;
     final int PICK_IMAGE_REQUEST = 71;
 
     private FirebaseAuth.AuthStateListener mAuthStateListener;
@@ -102,9 +106,13 @@ public class EditProfileActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_editprofile);
 
+
         btnChoose = findViewById(R.id.chooseProfilePicture);
         btnUpload = findViewById(R.id.uploadProfilePicture);
+        btnSubmit = findViewById(R.id.submit);
         imageView = findViewById(R.id.imgView);
+        changeEmail = findViewById(R.id.changeEmail);
+        changeEmail.setText(user.getEmail());
 
         storage = FirebaseStorage.getInstance();
         storageReference = storage.getReference();
@@ -120,6 +128,22 @@ public class EditProfileActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 uploadImage();
+            }
+        });
+
+        btnSubmit.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v) {
+                user.updateEmail(changeEmail.toString().trim()).addOnCompleteListener(new OnCompleteListener<Void>() {
+                    @Override
+                    public void onComplete(@NonNull Task<Void> task) {
+                        if (task.isSuccessful()) {
+                            startActivity(new Intent(EditProfileActivity.this, HomeActivity.class));
+                        } else {
+                            Toast.makeText(EditProfileActivity.this, "Oops, something's gone wrong... Please try again!", Toast.LENGTH_SHORT).show();
+                        }
+                    }
+                });
             }
         });
 
