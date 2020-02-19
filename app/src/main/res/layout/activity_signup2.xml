@@ -11,7 +11,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:ems="10"
-        android:hint="Course Duration"
+        android:hint="Remaining Years at Uni"
         android:inputType="number"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -37,7 +37,7 @@
         android:id="@+id/confirm"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:background="@drawable/Rectangle10"
+        android:background="@drawable/rectangle10"
         android:hint="Confirm"
         android:textColor="@android:color/white"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -49,8 +49,8 @@
 
     <Spinner
         android:id="@+id/chooseNationality"
-        android:layout_width="212dp"
-        android:layout_height="34dp"
+        android:layout_width="210dp"
+        android:layout_height="48dp"
         android:entries="@array/nationalities"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

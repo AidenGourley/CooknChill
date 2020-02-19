@@ -1,7 +1,7 @@
 package com.example.cooknchill.auth;
 
 public class User {
-    public String uid, university,firstName,surname,course="";
+    public String uid, university,firstName,surname,course,bio,nationality;
     public int courseDuration = 0;
 
     public User(){
@@ -14,5 +14,7 @@ public class User {
         this.surname = surname;
         this.course = "";
         this.courseDuration = 1;
+        this.nationality = "";
+        this.bio = "";
     }
 }

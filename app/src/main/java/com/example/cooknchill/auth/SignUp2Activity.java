@@ -37,11 +37,23 @@ public class SignUp2Activity extends AppCompatActivity {
             public void onClick(View v) {
                 final String course = SignUp2Activity.this.course.getText().toString().trim();
                 final String courseDuration = SignUp2Activity.this.courseDuration.getText().toString().trim();
-                final String nationality = SignUp2Activity.this.chooseNationality.toString().trim();
-                if (!(course.isEmpty() && courseDuration.isEmpty())){
+                final String nationality = SignUp2Activity.this.chooseNationality.getSelectedItem().toString().trim();
+                if (course.equals("")) {
+                    SignUp2Activity.this.course.setError("Don't forget to tell us your course!");
+                    SignUp2Activity.this.course.requestFocus();
+                }
+                else if (courseDuration.equals("")) {
+                    SignUp2Activity.this.courseDuration.setError("Don't forget to tell us your course duration!");
+                    SignUp2Activity.this.courseDuration.requestFocus();
+                }
+                else if (nationality.equals("Select Nationality")) {
+                    SignUp2Activity.this.courseDuration.setError("Don't forget to select your nationality!");
+                    SignUp2Activity.this.courseDuration.requestFocus();
+                }
+                else{
                     String uid = FirebaseAuth.getInstance().getCurrentUser().getUid();
                     DatabaseReference dbRef = FirebaseDatabase.getInstance().getReference("users").child(uid);
-                    dbRef.child("courseDuration").setValue(courseDuration);
+                    dbRef.child("courseDuration").setValue(courseDuration.trim());
                     dbRef.child("nationality").setValue(nationality);
                     dbRef.child("course").setValue(course).addOnCompleteListener(new OnCompleteListener<Void>() {
                         @Override
@@ -53,10 +65,6 @@ public class SignUp2Activity extends AppCompatActivity {
                             }
                         }
                     });
-                }
-                else{
-                    SignUp2Activity.this.course.setError("Please enter a valid course and duration!");
-                    SignUp2Activity.this.course.requestFocus();
                 }
             }
         });

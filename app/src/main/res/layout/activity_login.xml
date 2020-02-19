@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".auth.HomeActivity">
+    tools:context=".auth.LoginActivity">
 
     <TextView
         android:id="@+id/textView2"
@@ -35,7 +35,7 @@
         android:textAllCaps="false"
         android:textSize="16dp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/button6"
+        app:layout_constraintEnd_toStartOf="@+id/signup"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
@@ -43,7 +43,7 @@
 
 
     <Button
-        android:id="@+id/button6"
+        android:id="@+id/signup"
         android:layout_width="200dp"
         android:layout_height="50dp"
         android:background="@android:color/transparent"

@@ -22,6 +22,10 @@ import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.storage.OnProgressListener;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.FirebaseStorage;
@@ -32,14 +36,15 @@ import com.google.firebase.storage.UploadTask;
 public class EditProfileActivity extends AppCompatActivity {
     FirebaseStorage storage;
     StorageReference storageReference;
+    FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+    DatabaseReference userBioDBRef = FirebaseDatabase.getInstance().getReference().child(user.getUid());//.getInstance().getReference();
     Uri filePath;
-    Button btnChoose, btnUpload, btnSubmit;
+    Button btnEditPhoto, btnSubmit;
     ImageView imageView;
-    EditText changeEmail;
+    EditText bioText;
     final int PICK_IMAGE_REQUEST = 71;
 
     private FirebaseAuth.AuthStateListener mAuthStateListener;
-    FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
 
     private void chooseImage() {
         Intent intent = new Intent();
@@ -107,34 +112,39 @@ public class EditProfileActivity extends AppCompatActivity {
         setContentView(R.layout.activity_editprofile);
 
 
-        btnChoose = findViewById(R.id.chooseProfilePicture);
-        btnUpload = findViewById(R.id.uploadProfilePicture);
+        //btnChoose = findViewById(R.id.chooseProfilePicture);
+        btnEditPhoto = findViewById(R.id.editPhoto);
         btnSubmit = findViewById(R.id.submit);
         imageView = findViewById(R.id.imgView);
-        changeEmail = findViewById(R.id.changeEmail);
-        changeEmail.setText(user.getEmail());
+        bioText = findViewById(R.id.bioText);
 
         storage = FirebaseStorage.getInstance();
         storageReference = storage.getReference();
 
-        btnChoose.setOnClickListener(new View.OnClickListener() {
+
+        final DatabaseReference dbRef = FirebaseDatabase.getInstance().getReference("users").child(user.getUid());
+        //bioText.setText(dbRef.child("bio")..getKey());
+
+        btnEditPhoto.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 chooseImage();
+                uploadImage();
             }
         });
 
-        btnUpload.setOnClickListener(new View.OnClickListener() {
+        /*btnUpload.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 uploadImage();
             }
         });
+         */
 
         btnSubmit.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
-                user.updateEmail(changeEmail.toString().trim()).addOnCompleteListener(new OnCompleteListener<Void>() {
+                dbRef.child("bio").setValue(bioText.getText().toString()).addOnCompleteListener(new OnCompleteListener<Void>() {
                     @Override
                     public void onComplete(@NonNull Task<Void> task) {
                         if (task.isSuccessful()) {

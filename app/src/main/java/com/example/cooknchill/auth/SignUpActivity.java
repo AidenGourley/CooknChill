@@ -30,15 +30,18 @@ public class SignUpActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_signup);
-
         mFirebaseAuth = FirebaseAuth.getInstance();
+        if (mFirebaseAuth.getCurrentUser() != null && !mFirebaseAuth.getCurrentUser().isAnonymous()) {
+            startActivity(new Intent(SignUpActivity.this, HomeActivity.class));
+        }
+
         email = findViewById(R.id.email);
         uniChoice = findViewById(R.id.university);
         firstName = findViewById(R.id.firstName);
         surname = findViewById(R.id.surname);
         password = findViewById(R.id.password);
         register = findViewById(R.id.register);
-        signIn = findViewById(R.id.signup);
+        signIn = findViewById(R.id.signin);
 
         /**
         university.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
@@ -59,7 +62,7 @@ public class SignUpActivity extends AppCompatActivity {
                 final String firstName = SignUpActivity.this.firstName.getText().toString().trim();
                 final String surname = SignUpActivity.this.surname.getText().toString().trim();
                 if(university.contentEquals("Select University")){
-                    SignUpActivity.this.register.setError("Don't forget to enter your university!");
+                    SignUpActivity.this.email.setError("Don't forget to enter your university!");
                     SignUpActivity.this.uniChoice.requestFocus();
                 }
                 else if(email.isEmpty()){
@@ -69,10 +72,6 @@ public class SignUpActivity extends AppCompatActivity {
                 else if(firstName.equals("") || surname.equals("")){
                     SignUpActivity.this.firstName.setError("Don't forget to enter your name!");
                     SignUpActivity.this.firstName.requestFocus();
-                }
-                else if(university.equals("")){
-                    SignUpActivity.this.email.setError("Don't forget to enter your university!");
-                    SignUpActivity.this.email.requestFocus();
                 }
                 else if(!email.contains(".ac.uk")){
                     SignUpActivity.this.email.setError("Your email must be a valid academic email address!");

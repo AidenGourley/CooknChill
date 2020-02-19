@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:alpha="0.92"
     android:background="#FFFCFD"
-    tools:context="com.example.cooknchill.auth.EditProfileActivity">
+    tools:context=".auth.EditProfileActivity">
 
 
     <TextView
@@ -21,7 +21,7 @@
         app:layout_constraintVertical_bias="0.008" />
 
     <ImageView
-        android:id="@+id/profile_picture"
+        android:id="@+id/imgView"
         android:layout_width="244dp"
         android:layout_height="216dp"
         android:src="@drawable/camera_circle"
@@ -34,7 +34,7 @@
         tools:ignore="MissingConstraints" />
 
     <Button
-        android:id="@+id/cancel_button"
+        android:id="@+id/cancel"
         android:layout_width="30sp"
         android:layout_height="29sp"
         android:background="@drawable/cancel_icon"
@@ -47,7 +47,7 @@
         tools:ignore="MissingConstraints" />
 
     <Button
-        android:id="@+id/submit_button"
+        android:id="@+id/submit"
         style="@style/Widget.AppCompat.Button.Borderless.Colored"
         android:layout_width="30sp"
         android:layout_height="29sp"
@@ -62,7 +62,7 @@
 
 
     <EditText
-        android:id="@+id/BioText"
+        android:id="@+id/bioText"
         android:layout_width="282dp"
         android:layout_height="88dp"
         android:layout_marginStart="28dp"
@@ -113,13 +113,13 @@
         tools:ignore="MissingConstraints" />
 
     <Button
-        android:id="@+id/dProbutton"
+        android:id="@+id/deleteAccount"
         android:layout_width="233dp"
         android:layout_height="48dp"
         android:layout_marginStart="141dp"
         android:layout_marginEnd="182dp"
-        android:background="@drawable/Rectangle10"
-        android:text="DELETE"
+        android:background="@drawable/rectangle10"
+        android:text="DELETE ACCOUNT"
         android:textColor="@android:color/white"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -129,10 +129,10 @@
         app:layout_constraintVertical_bias="0.881" />
 
     <Button
-        android:id="@+id/button7"
+        android:id="@+id/editPhoto"
         android:layout_width="116dp"
         android:layout_height="43dp"
-        android:background="@drawable/Rectangle10"
+        android:background="@drawable/rectangle10"
         android:text="ADD PHOTO"
         android:textColor="@android:color/white"
         app:layout_constraintBottom_toBottomOf="parent"

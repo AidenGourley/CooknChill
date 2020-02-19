@@ -21,7 +21,6 @@ import com.google.firebase.auth.FirebaseUser;
 public class LoginActivity extends AppCompatActivity {
     EditText emailId, password;
     Button btnSignIn, signUp;
-    TextView signUp2;
     FirebaseAuth mFirebaseAuth;
     private FirebaseAuth.AuthStateListener mAuthStateListener;
 
@@ -34,7 +33,6 @@ public class LoginActivity extends AppCompatActivity {
         emailId = findViewById(R.id.email);
         password = findViewById(R.id.password);
         btnSignIn = findViewById(R.id.register);
-        signUp2 = findViewById(R.id.signin2);
         signUp = findViewById(R.id.signup);
 
         mAuthStateListener = new FirebaseAuth.AuthStateListener() {
@@ -91,13 +89,6 @@ public class LoginActivity extends AppCompatActivity {
         });
 
         signUp.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intSignUp = new Intent(LoginActivity.this, SignUpActivity.class);
-                startActivity(intSignUp);
-            }
-        });
-        signUp2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intSignUp = new Intent(LoginActivity.this, SignUpActivity.class);

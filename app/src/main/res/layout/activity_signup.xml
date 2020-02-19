@@ -68,6 +68,7 @@
         android:layout_width="216dp"
         android:layout_height="50dp"
         android:hint=""
+        android:entries="@array/universities"
         app:layout_constraintBottom_toBottomOf="@+id/imageView3"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.456"
