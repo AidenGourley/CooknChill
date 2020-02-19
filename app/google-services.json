@@ -15,6 +15,14 @@
       },
       "oauth_client": [
         {
+          "client_id": "371645976650-569309om34seflf57epvan0dcmlh1m91.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.cooknchill",
+            "certificate_hash": "9ffc7b46c34659efb10580629c7c685e48710f25"
+          }
+        },
+        {
           "client_id": "371645976650-9igmg0eibro2q4f1pstu9fs10iak5sck.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {

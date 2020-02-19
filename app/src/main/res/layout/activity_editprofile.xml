@@ -5,105 +5,9 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:alpha="0.92"
-    android:background="@android:color/background_light"
+    android:background="#FFFCFD"
     tools:context="com.example.cooknchill.auth.EditProfileActivity">
 
-
-    <Button
-        android:id="@+id/bio_cancel_icon4"
-        android:layout_width="19sp"
-        android:layout_height="26sp"
-        android:background="@drawable/bio_x_icon"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.841"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.781"
-        tools:ignore="MissingConstraints" />
-
-    <EditText
-        android:id="@+id/editText11"
-        android:layout_width="278sp"
-        android:layout_height="38sp"
-        android:ems="10"
-        android:inputType="textPersonName"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.526"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.877" />
-
-    <Button
-        android:id="@+id/bio_cancel_icon3"
-        android:layout_width="19sp"
-        android:layout_height="26sp"
-        android:background="@drawable/bio_x_icon"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.841"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.862"
-        tools:ignore="MissingConstraints" />
-
-    <TextView
-        android:id="@+id/contact_Title"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="CONTACT"
-        android:textColor="#0C0B0B"
-        android:textSize="20dp"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.503"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.7"
-        tools:ignore="MissingConstraints" />
-
-    <Spinner
-        android:id="@+id/sex_spinner"
-        android:layout_width="14sp"
-        android:layout_height="22sp"
-        android:layout_marginBottom="16dp"
-        android:background="@drawable/birthday_dropdown"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.445"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.642"
-        tools:ignore="MissingConstraints" />
-
-    <Button
-        android:id="@+id/email_x_icon"
-        android:layout_width="19sp"
-        android:layout_height="26sp"
-        android:background="@drawable/bio_x_icon"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.829"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.448"
-        tools:ignore="MissingConstraints" />
-
-
-    <Button
-        android:id="@+id/username_x_icon"
-        android:layout_width="19sp"
-        android:layout_height="26sp"
-        android:background="@drawable/bio_x_icon"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.836"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.534"
-        tools:ignore="MissingConstraints" />
 
     <TextView
         android:id="@+id/Edit_Profile"
@@ -118,27 +22,15 @@
 
     <ImageView
         android:id="@+id/profile_picture"
-        android:layout_width="135sp"
-        android:layout_height="165sp"
+        android:layout_width="244dp"
+        android:layout_height="216dp"
         android:src="@drawable/camera_circle"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.044"
-        tools:ignore="MissingConstraints" />
-
-    <Button
-        android:id="@+id/camera_icon"
-        android:layout_width="34sp"
-        android:layout_height="34sp"
-        android:background="@drawable/camera_icon"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.615"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.223"
+        app:srcCompat="@drawable/rectangle_18"
         tools:ignore="MissingConstraints" />
 
     <Button
@@ -156,6 +48,7 @@
 
     <Button
         android:id="@+id/submit_button"
+        style="@style/Widget.AppCompat.Button.Borderless.Colored"
         android:layout_width="30sp"
         android:layout_height="29sp"
         android:background="@drawable/submit_icon"
@@ -167,210 +60,41 @@
         app:layout_constraintVertical_bias="0.0"
         tools:ignore="MissingConstraints" />
 
-    <Button
-        android:id="@+id/bio_cancel_icon"
-        android:layout_width="19sp"
-        android:layout_height="26sp"
-        android:background="@drawable/bio_x_icon"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.826"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.302"
-        tools:ignore="MissingConstraints" />
-
-
-    <TextView
-        android:id="@+id/Bio_View"
-        android:layout_width="32sp"
-        android:layout_height="25sp"
-        android:text="Bio"
-        android:textSize="17dp"
-        android:textStyle="italic"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.182"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.266"
-        tools:ignore="MissingConstraints" />
 
     <EditText
         android:id="@+id/BioText"
-        android:layout_width="275sp"
-        android:layout_height="38dp"
+        android:layout_width="282dp"
+        android:layout_height="88dp"
         android:layout_marginStart="28dp"
         android:ems="10"
         android:inputType="textPersonName"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.379"
+        app:layout_constraintHorizontal_bias="0.485"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.307"
+        app:layout_constraintVertical_bias="0.451"
         tools:ignore="MissingConstraints" />
 
     <TextView
-        android:id="@+id/Personal_Title"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:id="@+id/Bio_Title"
+        android:layout_width="138dp"
+        android:layout_height="37dp"
         android:layout_marginStart="8sp"
-        android:text="PERSONAL"
+        android:gravity="center"
+        android:text="BIO"
         android:textColor="#0A0A0A"
         android:textSize="20sp"
         android:textStyle="bold"
+        app:autoSizeTextType="uniform"
+        app:fontFamily="sans-serif-medium"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.476"
+        app:layout_constraintHorizontal_bias="0.483"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.377"
         tools:ignore="MissingConstraints" />
-
-    <TextView
-        android:id="@+id/Email_Title"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Email"
-        android:textSize="17sp"
-        android:textStyle="italic"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.186"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.413"
-        tools:ignore="MissingConstraints" />
-
-    <EditText
-        android:id="@+id/email_search"
-        android:layout_width="277sp"
-        android:layout_height="38sp"
-        android:layout_marginBottom="376dp"
-        android:ems="10"
-        android:inputType="textEmailAddress"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.514"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/Edit_Profile"
-        app:layout_constraintVertical_bias="0.996"
-        tools:ignore="MissingConstraints" />
-
-    <EditText
-        android:id="@+id/username_search"
-        android:layout_width="278sp"
-        android:layout_height="38sp"
-        android:ems="10"
-        android:inputType="textPersonName"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.518"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.544"
-        tools:ignore="MissingConstraints" />
-
-    <TextView
-        android:id="@+id/Username_title"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Username"
-        android:textSize="17sp"
-        android:textStyle="italic"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.205"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:ignore="MissingConstraints" />
-
-    <EditText
-        android:id="@+id/BirthDate"
-        android:layout_width="143sp"
-        android:layout_height="40sp"
-        android:layout_marginStart="72sp"
-        android:ems="10"
-        android:inputType="date"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.653"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.643" />
-
-    <Spinner
-        android:id="@+id/Gender_spinner"
-        android:layout_width="14sp"
-        android:layout_height="22sp"
-        android:layout_marginBottom="16sp"
-        android:background="@drawable/birthday_dropdown"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.831"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.643"
-        tools:ignore="MissingConstraints" />
-
-    <EditText
-        android:id="@+id/Gender_Text"
-        android:layout_width="125sp"
-        android:layout_height="40sp"
-        android:ems="10"
-        android:inputType="textPersonName"
-        android:text="Gender"
-        android:textSize="17sp"
-        android:textStyle="italic"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.234"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.643"
-        tools:ignore="MissingConstraints" />
-
-    <TextView
-        android:id="@+id/name_text_view"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Name"
-        android:textSize="17sp"
-        android:textStyle="italic"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.19"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.745"
-        tools:ignore="InvalidId,MissingConstraints" />
-
-    <EditText
-        android:id="@+id/name_edit_text"
-        android:layout_width="278sp"
-        android:layout_height="38sp"
-        android:ems="10"
-        android:inputType="textPersonName"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.526"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.795" />
-
-    <TextView
-        android:id="@+id/Phone_Number"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Phone Number"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.221"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.827" />
-
 
     <Switch
         android:id="@+id/switch_accounts"
@@ -382,25 +106,41 @@
         android:textStyle="italic"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.345"
+        app:layout_constraintHorizontal_bias="0.08"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.947"
+        app:layout_constraintVertical_bias="0.977"
         tools:ignore="MissingConstraints" />
 
-    <TextView
-        android:id="@+id/textView11"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="BirthDate"
-        android:textSize="17sp"
-        android:textStyle="italic"
+    <Button
+        android:id="@+id/dProbutton"
+        android:layout_width="233dp"
+        android:layout_height="48dp"
+        android:layout_marginStart="141dp"
+        android:layout_marginEnd="182dp"
+        android:background="@drawable/Rectangle10"
+        android:text="DELETE"
+        android:textColor="@android:color/white"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.584"
+        app:layout_constraintHorizontal_bias="0.358"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.596" />
+        app:layout_constraintVertical_bias="0.881" />
+
+    <Button
+        android:id="@+id/button7"
+        android:layout_width="116dp"
+        android:layout_height="43dp"
+        android:background="@drawable/Rectangle10"
+        android:text="ADD PHOTO"
+        android:textColor="@android:color/white"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.276" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

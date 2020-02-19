@@ -65,7 +65,7 @@
 
     <Spinner
         android:id="@+id/university"
-        android:layout_width="205dp"
+        android:layout_width="216dp"
         android:layout_height="50dp"
         android:hint=""
         app:layout_constraintBottom_toBottomOf="@+id/imageView3"
@@ -112,7 +112,7 @@
         android:fontFamily="@font/poppisnmedium"
         android:gravity="center"
         android:paddingLeft="10dp"
-        android:text="CONTINUE"
+        android:text="REGISTER"
         android:textAllCaps="false"
         android:textColor="@android:color/white"
         app:layout_constraintBottom_toBottomOf="parent"
