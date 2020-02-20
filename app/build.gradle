@@ -38,6 +38,9 @@ dependencies {
     implementation 'com.google.firebase:firebase-analytics:17.2.2'
     //compile 'android.arch.persistence.room:runtime:' + rootProject.archRoomVersion;
     annotationProcessor 'android.arch.persistence.room:compiler:' + rootProject.archRoomVersion
+
+    compile 'com.github.bumptech.glide:glide:3.5.2'
+    compile 'com.android.support:support-v4:22.0.0'
 }
 
 apply plugin: 'com.google.gms.google-services'

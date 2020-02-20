@@ -13,8 +13,11 @@ import android.widget.ImageView;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import android.app.ProgressDialog;
+import android.widget.Spinner;
+import android.widget.TextView;
 import android.widget.Toast;
 
+import com.bumptech.glide.Glide;
 import com.example.cooknchill.R;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
@@ -23,6 +26,7 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
@@ -37,11 +41,13 @@ public class EditProfileActivity extends AppCompatActivity {
     FirebaseStorage storage;
     StorageReference storageReference;
     FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
-    DatabaseReference userBioDBRef = FirebaseDatabase.getInstance().getReference().child(user.getUid());//.getInstance().getReference();
+    final DatabaseReference dbRef = FirebaseDatabase.getInstance().getReference().child(user.getUid());
     Uri filePath;
     Button btnEditPhoto, btnSubmit;
     ImageView imageView;
     EditText bioText;
+    TextView dishPreferenceText1, dishPreferenceText2, dishPreferenceText3;
+    Spinner dishPriority1, dishPriority2, dishPriority3;
     final int PICK_IMAGE_REQUEST = 71;
 
     private FirebaseAuth.AuthStateListener mAuthStateListener;
@@ -61,12 +67,13 @@ public class EditProfileActivity extends AppCompatActivity {
             progressDialog.setTitle("Uploading...");
             progressDialog.show();
 
-            StorageReference ref = storageReference.child("images/"+ user.getUid());
+            final StorageReference ref = storageReference.child(user.getUid() + "/profilePic");
             ref.putFile(filePath)
                     .addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
                         @Override
                         public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
                             progressDialog.dismiss();
+                            dbRef.child(user.getUid()).child("profilePic").setValue(ref.getDownloadUrl().toString());
                             Toast.makeText(EditProfileActivity.this, "Uploaded", Toast.LENGTH_SHORT).show();
                         }
                     })
@@ -111,19 +118,43 @@ public class EditProfileActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_editprofile);
 
-
-        //btnChoose = findViewById(R.id.chooseProfilePicture);
         btnEditPhoto = findViewById(R.id.editPhoto);
         btnSubmit = findViewById(R.id.submit);
         imageView = findViewById(R.id.imgView);
         bioText = findViewById(R.id.bioText);
+        dishPriority1 = findViewById(R.id.dishPriority1);
+        dishPriority2 = findViewById(R.id.dishPriority2);
+        dishPriority3 = findViewById(R.id.dishPriority3);
+        dishPreferenceText1 = findViewById(R.id.dishPreferenceText1);
+        dishPreferenceText2 = findViewById(R.id.dishPreferenceText2);
+        dishPreferenceText3 = findViewById(R.id.dishPreferenceText3);
 
         storage = FirebaseStorage.getInstance();
         storageReference = storage.getReference();
 
 
         final DatabaseReference dbRef = FirebaseDatabase.getInstance().getReference("users").child(user.getUid());
-        //bioText.setText(dbRef.child("bio")..getKey());
+        dbRef.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                String bio = dataSnapshot.child("bio").getValue().toString();
+                String dp1 = dataSnapshot.child("dishPreference1").getValue().toString();
+                String dp2 = dataSnapshot.child("dishPreference2").getValue().toString();
+                String dp3 = dataSnapshot.child("dishPreference3").getValue().toString();
+                bioText.setText(bio);
+                dishPreferenceText1.setText(dp1);
+                dishPreferenceText2.setText(dp2);
+                dishPreferenceText3.setText(dp3);
+                System.out.println("Profile Picture URL: " + dataSnapshot.child("profilePic").getValue().toString());
+                Glide.with(EditProfileActivity.this).load(dataSnapshot.child("profilePic").getValue().toString()).into(imageView);
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
+
 
         btnEditPhoto.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -133,13 +164,6 @@ public class EditProfileActivity extends AppCompatActivity {
             }
         });
 
-        /*btnUpload.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                uploadImage();
-            }
-        });
-         */
 
         btnSubmit.setOnClickListener(new View.OnClickListener(){
             @Override
@@ -148,6 +172,18 @@ public class EditProfileActivity extends AppCompatActivity {
                     @Override
                     public void onComplete(@NonNull Task<Void> task) {
                         if (task.isSuccessful()) {
+                            final String dp1 = dishPriority1.getSelectedItem().toString().trim();
+                            final String dp2 = dishPriority2.getSelectedItem().toString().trim();
+                            final String dp3 = dishPriority3.getSelectedItem().toString().trim();
+                            if (!dp1.equals("Select Nationality")){
+                                dbRef.child("dishPreference1").setValue(dp1);
+                            }
+                            if (!dp2.equals("Select Nationality")){
+                                dbRef.child("dishPreference2").setValue(dp2);
+                            }
+                            if (!dp3.equals("Select Nationality")){
+                                dbRef.child("dishPreference3").setValue(dp3);
+                            }
                             startActivity(new Intent(EditProfileActivity.this, HomeActivity.class));
                         } else {
                             Toast.makeText(EditProfileActivity.this, "Oops, something's gone wrong... Please try again!", Toast.LENGTH_SHORT).show();
@@ -156,7 +192,5 @@ public class EditProfileActivity extends AppCompatActivity {
                 });
             }
         });
-
-
     }
 }

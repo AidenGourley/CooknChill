@@ -9,6 +9,42 @@
     tools:context=".auth.EditProfileActivity">
 
 
+    <Spinner
+        android:id="@+id/dishPriority2"
+        android:layout_width="205dp"
+        android:layout_height="32dp"
+        android:entries="@array/nationalities"
+        app:layout_constraintBottom_toTopOf="@+id/deleteAccount"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/dishPreferenceText3"
+        app:layout_constraintVertical_bias="0.494" />
+
+    <Spinner
+        android:id="@+id/dishPriority3"
+        android:layout_width="205dp"
+        android:layout_height="32dp"
+        android:entries="@array/nationalities"
+        app:layout_constraintBottom_toTopOf="@+id/deleteAccount"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.495"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/dishPriority2"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <Spinner
+        android:id="@+id/dishPriority1"
+        android:layout_width="205dp"
+        android:layout_height="30dp"
+        android:entries="@array/nationalities"
+        app:layout_constraintBottom_toTopOf="@+id/dishPriority2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/dishPreferenceText3"
+        app:layout_constraintVertical_bias="1.0" />
+
     <TextView
         android:id="@+id/Edit_Profile"
         android:layout_width="wrap_content"
@@ -70,7 +106,7 @@
         android:inputType="textPersonName"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.485"
+        app:layout_constraintHorizontal_bias="0.356"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.451"
@@ -94,6 +130,82 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.377"
+        tools:ignore="MissingConstraints" />
+
+    <TextView
+        android:id="@+id/dishPreferenceText3"
+        android:layout_width="137dp"
+        android:layout_height="18dp"
+        android:layout_marginStart="8sp"
+        android:layout_marginTop="11dp"
+        android:gravity="center"
+        android:text="Select Nationality"
+        android:textColor="#0A0A0A"
+        android:textSize="12sp"
+        android:textStyle="italic"
+        app:autoSizeTextType="uniform"
+        app:fontFamily="sans-serif-medium"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.481"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/dishPreferenceText2"
+        tools:ignore="MissingConstraints" />
+
+    <TextView
+        android:id="@+id/dishPreferenceText2"
+        android:layout_width="137dp"
+        android:layout_height="18dp"
+        android:layout_marginStart="8sp"
+        android:layout_marginTop="9dp"
+        android:gravity="center"
+        android:text="Select Nationality"
+        android:textColor="#0A0A0A"
+        android:textSize="12sp"
+        android:textStyle="italic"
+        app:autoSizeTextType="uniform"
+        app:fontFamily="sans-serif-medium"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.481"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/dishPreferenceText1"
+        tools:ignore="MissingConstraints" />
+
+    <TextView
+        android:id="@+id/dishPreferenceText1"
+        android:layout_width="137dp"
+        android:layout_height="18dp"
+        android:layout_marginStart="8sp"
+        android:layout_marginTop="12dp"
+        android:gravity="center"
+        android:text="Select Nationality"
+        android:textColor="#0A0A0A"
+        android:textSize="12sp"
+        android:textStyle="italic"
+        app:autoSizeTextType="uniform"
+        app:fontFamily="sans-serif-medium"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.483"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/dishPreferenceTitle"
+        tools:ignore="MissingConstraints" />
+
+    <TextView
+        android:id="@+id/dishPreferenceTitle"
+        android:layout_width="138dp"
+        android:layout_height="37dp"
+        android:layout_marginStart="8sp"
+        android:layout_marginTop="8dp"
+        android:gravity="center"
+        android:text="Dish Matching Preference"
+        android:textColor="#0A0A0A"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:autoSizeTextType="uniform"
+        app:fontFamily="sans-serif-medium"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.483"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/bioText"
         tools:ignore="MissingConstraints" />
 
     <Switch
@@ -126,7 +238,7 @@
         app:layout_constraintHorizontal_bias="0.358"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.881" />
+        app:layout_constraintVertical_bias="0.923" />
 
     <Button
         android:id="@+id/editPhoto"
