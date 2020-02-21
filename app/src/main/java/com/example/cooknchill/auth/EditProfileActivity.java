@@ -38,16 +38,19 @@ import com.google.firebase.storage.UploadTask;
 
 
 public class EditProfileActivity extends AppCompatActivity {
+
     FirebaseStorage storage;
     StorageReference storageReference;
+    FirebaseAuth mFirebaseAuth;
     FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
     final DatabaseReference dbRef = FirebaseDatabase.getInstance().getReference().child(user.getUid());
     Uri filePath;
-    Button btnEditPhoto, btnSubmit;
+    Button btnEditPhoto, btnSubmit, btnCancel, btnDeleteProfile;
     ImageView imageView;
     EditText bioText;
     TextView dishPreferenceText1, dishPreferenceText2, dishPreferenceText3;
     Spinner dishPriority1, dishPriority2, dishPriority3;
+
     final int PICK_IMAGE_REQUEST = 71;
 
     private FirebaseAuth.AuthStateListener mAuthStateListener;
@@ -117,9 +120,12 @@ public class EditProfileActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_editprofile);
+        mFirebaseAuth = FirebaseAuth.getInstance();
 
+        btnDeleteProfile = findViewById(R.id.deleteAccount);
         btnEditPhoto = findViewById(R.id.editPhoto);
         btnSubmit = findViewById(R.id.submit);
+        btnCancel = findViewById(R.id.cancel);
         imageView = findViewById(R.id.imgView);
         bioText = findViewById(R.id.bioText);
         dishPriority1 = findViewById(R.id.dishPriority1);
@@ -132,27 +138,36 @@ public class EditProfileActivity extends AppCompatActivity {
         storage = FirebaseStorage.getInstance();
         storageReference = storage.getReference();
 
-
         final DatabaseReference dbRef = FirebaseDatabase.getInstance().getReference("users").child(user.getUid());
+
+
         dbRef.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                String bio = dataSnapshot.child("bio").getValue().toString();
-                String dp1 = dataSnapshot.child("dishPreference1").getValue().toString();
-                String dp2 = dataSnapshot.child("dishPreference2").getValue().toString();
-                String dp3 = dataSnapshot.child("dishPreference3").getValue().toString();
-                bioText.setText(bio);
-                dishPreferenceText1.setText(dp1);
-                dishPreferenceText2.setText(dp2);
-                dishPreferenceText3.setText(dp3);
-                System.out.println("Profile Picture URL: " + dataSnapshot.child("profilePic").getValue().toString());
-                Glide.with(EditProfileActivity.this).load(dataSnapshot.child("profilePic").getValue().toString()).into(imageView);
+                // All changes ust be tried in his exception handler in case an account deletion
+                // triggers the onChange function.
+                try {
+                    String bio = dataSnapshot.child("bio").getValue().toString();
+                    String dp1 = dataSnapshot.child("dishPreference1").getValue().toString();
+                    String dp2 = dataSnapshot.child("dishPreference2").getValue().toString();
+                    String dp3 = dataSnapshot.child("dishPreference3").getValue().toString();
+                    bioText.setText(bio);
+                    dishPreferenceText1.setText(dp1);
+                    dishPreferenceText2.setText(dp2);
+                    dishPreferenceText3.setText(dp3);
+                    System.out.println("Profile Picture URL: " + dataSnapshot.child("profilePic").getValue().toString());
+                    Glide.with(EditProfileActivity.this).load(dataSnapshot.child("profilePic").getValue().toString()).into(imageView);
+
+                }catch(NullPointerException e){
+                    System.out.println("Database field couldn't be accessed. Likely user deleted account.");
+                }
             }
 
             @Override
             public void onCancelled(@NonNull DatabaseError databaseError) {
 
             }
+
         });
 
 
@@ -188,6 +203,31 @@ public class EditProfileActivity extends AppCompatActivity {
                         } else {
                             Toast.makeText(EditProfileActivity.this, "Oops, something's gone wrong... Please try again!", Toast.LENGTH_SHORT).show();
                         }
+                    }
+                });
+            }
+        });
+
+
+        btnCancel.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(EditProfileActivity.this, HomeActivity.class));
+            }
+        });
+
+        btnDeleteProfile.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                dbRef.getParent().removeValue().addOnSuccessListener(new OnSuccessListener<Void>() {
+                    @Override
+                    public void onSuccess(Void aVoid) {
+                        user.delete().addOnSuccessListener(new OnSuccessListener<Void>() {
+                            @Override
+                            public void onSuccess(Void aVoid) {
+                                startActivity(new Intent(EditProfileActivity.this, SignUpActivity.class));
+                            }
+                        });
                     }
                 });
             }

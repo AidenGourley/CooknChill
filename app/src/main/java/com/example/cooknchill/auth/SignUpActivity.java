@@ -31,9 +31,6 @@ public class SignUpActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_signup);
         mFirebaseAuth = FirebaseAuth.getInstance();
-        if (mFirebaseAuth.getCurrentUser() != null && !mFirebaseAuth.getCurrentUser().isAnonymous()) {
-            startActivity(new Intent(SignUpActivity.this, HomeActivity.class));
-        }
 
         email = findViewById(R.id.email);
         uniChoice = findViewById(R.id.university);
