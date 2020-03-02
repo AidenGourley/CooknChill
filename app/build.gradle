@@ -20,7 +20,7 @@ android {
 }
 
 dependencies {
-    implementation 'com.google.firebase:firebase-core:17.2.2'
+    implementation 'com.google.firebase:firebase-core:17.2.3'
     implementation 'com.google.firebase:firebase-auth:19.2.0'
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     implementation 'androidx.appcompat:appcompat:1.1.0'
@@ -35,7 +35,7 @@ dependencies {
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
     implementation 'com.google.android.material:material:1.1.0'
 
-    implementation 'com.google.firebase:firebase-analytics:17.2.2'
+    implementation 'com.google.firebase:firebase-analytics:17.2.3'
     //compile 'android.arch.persistence.room:runtime:' + rootProject.archRoomVersion;
     annotationProcessor 'android.arch.persistence.room:compiler:' + rootProject.archRoomVersion
 
@@ -54,6 +54,8 @@ dependencies {
 
     // Testing Navigation
     androidTestImplementation "androidx.navigation:navigation-testing:$nav_version"
+    implementation 'com.google.android.material:material:1.1.0'
+    implementation 'com.android.support:design:28.0.0'
 
     // End of Navigation //
 }

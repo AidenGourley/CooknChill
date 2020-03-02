@@ -6,11 +6,13 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import androidx.navigation.NavController;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
+import androidx.navigation.Navigation;
 
 import com.example.cooknchill.R;
 import com.google.firebase.auth.FirebaseAuth;
@@ -38,7 +40,7 @@ public class HomeFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         mFirebaseAuth = FirebaseAuth.getInstance();
-
+        final NavController navController = Navigation.findNavController(view);
         btnLogout = view.findViewById(R.id.logout);
         btnEditProfile = view.findViewById(R.id.editProfile);
 
@@ -54,8 +56,9 @@ public class HomeFragment extends Fragment {
         btnEditProfile.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intToEditProfile = new Intent(getActivity(), EditProfileActivity.class);
-                startActivity(intToEditProfile);
+                navController.navigate(R.id.action_homeFragment_to_editProfileFragment);
+                //Intent intToEditProfile = new Intent(getActivity(), EditProfileActivity.class);
+                //startActivity(intToEditProfile);
             }
         });
     }

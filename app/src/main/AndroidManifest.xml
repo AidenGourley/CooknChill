@@ -13,14 +13,10 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name=".auth.MainActivity"></activity>
-        <activity
-            android:name=".auth.EditProfileActivity"
-            android:label="Edit Profile" />
         <activity android:name=".auth.SignUp2Activity" />
         <activity
             android:name=".auth.LoginActivity"
             android:label="Login" />
-        <activity android:name=".auth.HomeActivity" />
         <activity android:name=".auth.SignUpActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

@@ -158,7 +158,6 @@ public class EditProfileFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 navController.navigate(R.id.action_editProfileFragment_to_homeFragment);
-
             }
         });
 

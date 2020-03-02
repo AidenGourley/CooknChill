@@ -15,7 +15,10 @@
         android:id="@+id/homeFragment"
         android:name="com.example.cooknchill.auth.HomeFragment"
         android:label="HomeFragment" >
+
         <action
+            app:popUpTo="@id/homeFragment"
+            app:popUpToInclusive="false"
             android:id="@+id/action_homeFragment_to_editProfileFragment"
             app:destination="@id/editProfileFragment"
             app:enterAnim="@anim/nav_default_pop_enter_anim"
