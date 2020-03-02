@@ -4,9 +4,11 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".auth.HomeActivity">
+    android:alpha="0.92"
+    android:background="#FFFCFD"
+    tools:context=".auth.HomeFragment">
 
-
+    <!-- TODO: Update blank fragment layout -->
     <TextView
         android:id="@+id/textView2"
         android:layout_width="wrap_content"

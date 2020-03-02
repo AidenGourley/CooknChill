@@ -74,7 +74,8 @@ public class LoginActivity extends AppCompatActivity {
                                 Toast.makeText(LoginActivity.this,"Sorry, that's not quite right... Give it another go!",Toast.LENGTH_SHORT).show();
                             }
                             else{
-                                Intent intToHome = new Intent(LoginActivity.this,HomeActivity.class);
+                                //Intent intToHome = new Intent(LoginActivity.this,HomeActivity.class);
+                                Intent intToHome = new Intent(LoginActivity.this,HomeFragment.class);
                                 startActivity(intToHome);
                             }
                         }
