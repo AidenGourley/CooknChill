@@ -74,9 +74,9 @@ public class LoginActivity extends AppCompatActivity {
                                 Toast.makeText(LoginActivity.this,"Sorry, that's not quite right... Give it another go!",Toast.LENGTH_SHORT).show();
                             }
                             else{
-                                //Intent intToHome = new Intent(LoginActivity.this,HomeActivity.class);
-                                Intent intToHome = new Intent(LoginActivity.this,HomeFragment.class);
-                                startActivity(intToHome);
+                                Intent intent = new Intent(LoginActivity.this,MainActivity.class);
+                                intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                                startActivity(intent);
                             }
                         }
                     });
@@ -85,7 +85,6 @@ public class LoginActivity extends AppCompatActivity {
                     Toast.makeText(LoginActivity.this,"Oops, something's gone wrong... Please try again!",Toast.LENGTH_SHORT).show();
 
                 }
-
             }
         });
 

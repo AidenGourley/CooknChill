@@ -19,16 +19,19 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        NavController navController = Navigation.findNavController(this, R.id.MainActivityNavHostFrag);
         BottomNavigationView bottomNav = findViewById(R.id.bottom_nav);
+        NavigationUI.setupWithNavController(bottomNav, navController);
+
         Fragment mFragment;
         mFragment = new HomeFragment();
         FragmentManager fragmentManager = getSupportFragmentManager();
         fragmentManager.beginTransaction()
                 .replace(R.id.MainActivityNavHostFrag, mFragment).commit();
-        /*setContentView(R.layout.activity_main);
-        NavHostFragment.create(R.navigation.nav_graph);
-        FragmentManager fm = getSupportFragmentManager();
-        HomeFragment fragment = new HomeFragment();
-        fm.beginTransaction().replace(R.id.container,fragment).commit();*/
+
     }
-}
+
+
+    }
+

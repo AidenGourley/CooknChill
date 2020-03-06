@@ -2,14 +2,14 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
     <item
-        android:id="@+id/navigation_editProfile"
-        android:icon="@drawable/camera_icon"
-        android:title="Edit Profile"/>
+        android:id="@+id/homeFragment"
+        android:icon="@drawable/home_icon"
+        android:title="Home"/>
 
     <item
-        android:id="@+id/navigation_home"
-        android:icon="@drawable/email_x_icon"
-        android:title="Home"/>
+        android:id="@+id/editProfileFragment"
+        android:icon="@drawable/edit_profile_icon"
+        android:title="Edit Profile"/>
 
 
 </menu>

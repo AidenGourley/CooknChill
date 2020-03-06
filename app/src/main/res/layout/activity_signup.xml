@@ -123,23 +123,6 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.998" />
 
-    <TextView
-        android:id="@+id/textView2"
-        android:layout_width="298dp"
-        android:layout_height="73dp"
-        android:fontFamily="@font/publicasans"
-        android:text="COOK N' CHILL"
-        android:textColor="#FF344C"
-        android:textSize="30dp"
-        app:autoSizeTextType="uniform"
-        app:layout_constraintBottom_toBottomOf="@+id/imageView3"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.486"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.085" />
-
     <Button
         android:id="@+id/signin"
         android:layout_width="177dp"
@@ -173,6 +156,16 @@
         app:layout_constraintStart_toStartOf="@+id/signin"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.25" />
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toTopOf="@+id/textView5"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/cook_n_chill_logo" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

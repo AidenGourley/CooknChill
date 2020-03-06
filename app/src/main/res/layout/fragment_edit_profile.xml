@@ -45,59 +45,48 @@
             app:layout_constraintTop_toBottomOf="@+id/dishPreferenceText3"
             app:layout_constraintVertical_bias="1.0" />
 
-        <TextView
-            android:id="@+id/Edit_Profile"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="EDIT PROFILE"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.008" />
+    <ImageView
+        android:id="@+id/imgView"
+        android:layout_width="149dp"
+        android:layout_height="131dp"
+        android:src="@drawable/camera_circle"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.086"
+        app:srcCompat="@drawable/rectangle_18"
+        tools:ignore="MissingConstraints" />
 
-        <ImageView
-            android:id="@+id/imgView"
-            android:layout_width="244dp"
-            android:layout_height="216dp"
-            android:src="@drawable/camera_circle"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.044"
-            app:srcCompat="@drawable/rectangle_18"
-            tools:ignore="MissingConstraints" />
-
-        <Button
-            android:id="@+id/cancel"
-            android:layout_width="30sp"
-            android:layout_height="29sp"
-            android:background="@drawable/cancel_icon"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.007"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.0"
-            tools:ignore="MissingConstraints" />
-
-        <Button
-            android:id="@+id/submit"
-            style="@style/Widget.AppCompat.Button.Borderless.Colored"
-            android:layout_width="30sp"
-            android:layout_height="29sp"
-            android:background="@drawable/submit_icon"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="1.0"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.0"
-            tools:ignore="MissingConstraints" />
+    <Button
+        android:id="@+id/cancel"
+        android:layout_width="30sp"
+        android:layout_height="29sp"
+        android:background="@drawable/cancel_icon"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.112"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.074"
+        tools:ignore="MissingConstraints" />
 
 
-        <EditText
+    <Button
+        android:id="@+id/submit"
+        style="@style/Widget.AppCompat.Button.Borderless.Colored"
+        android:layout_width="30sp"
+        android:layout_height="29sp"
+        android:background="@drawable/submit_icon"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.881"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.074"
+        tools:ignore="MissingConstraints" />
+
+    <EditText
             android:id="@+id/bioText"
             android:layout_width="282dp"
             android:layout_height="88dp"
@@ -208,23 +197,7 @@
             app:layout_constraintTop_toBottomOf="@+id/bioText"
             tools:ignore="MissingConstraints" />
 
-        <Switch
-            android:id="@+id/switch_accounts"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginEnd="48sp"
-            android:text="Switch Accounts"
-            android:textSize="17sp"
-            android:textStyle="italic"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.08"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.977"
-            tools:ignore="MissingConstraints" />
-
-        <Button
+    <Button
             android:id="@+id/deleteAccount"
             android:layout_width="233dp"
             android:layout_height="48dp"

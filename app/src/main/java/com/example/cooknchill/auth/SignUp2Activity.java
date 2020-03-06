@@ -61,7 +61,9 @@ public class SignUp2Activity extends AppCompatActivity {
                             if (task.isSuccessful()) {
 
                                 //navController.navigate(R.id.action_editProfileFragment_to_homeFragment);
-                                startActivity(new Intent(SignUp2Activity.this, MainActivity.class));//Old version was HomeActivity.class
+                                Intent intent = new Intent(SignUp2Activity.this, MainActivity.class);
+                                intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                                startActivity(intent);
                             } else {
                                 Toast.makeText(SignUp2Activity.this, "Oops, something's gone wrong... Please try again!", Toast.LENGTH_SHORT).show();
                             }

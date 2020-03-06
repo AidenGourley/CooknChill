@@ -265,7 +265,7 @@ public class EditProfileFragment extends Fragment {
         btnDeleteProfile.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                dbRef.getParent().removeValue().addOnSuccessListener(new OnSuccessListener<Void>() {
+                dbRef.removeValue().addOnSuccessListener(new OnSuccessListener<Void>() {
                     @Override
                     public void onSuccess(Void aVoid) {
                         user.delete().addOnSuccessListener(new OnSuccessListener<Void>() {
