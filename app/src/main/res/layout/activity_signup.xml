@@ -9,8 +9,11 @@
 
     <EditText
         android:id="@+id/firstName"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="291dp"
+        android:layout_height="47dp"
+        android:background="@android:color/white"
+        android:fontFamily="@font/poppinslight"
+        android:textSize="15dp"
         android:ems="10"
         android:hint="First Name"
         android:inputType="textPersonName"
@@ -23,8 +26,11 @@
 
     <EditText
         android:id="@+id/surname"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="291dp"
+        android:layout_height="47dp"
+        android:background="@android:color/white"
+        android:fontFamily="@font/poppinslight"
+        android:textSize="15dp"
         android:ems="10"
         android:hint="Surname"
         android:inputType="textPersonName"
@@ -37,10 +43,12 @@
 
     <EditText
         android:id="@+id/email"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:ems="10"
-        android:hint="Email"
+        android:layout_width="291dp"
+        android:layout_height="47dp"
+        android:background="@android:color/white"
+        android:fontFamily="@font/poppinslight"
+        android:hint="Email Address"
+        android:textSize="15dp"
         android:inputType="textEmailAddress"
         app:layout_constraintBottom_toBottomOf="@+id/imageView3"
         app:layout_constraintEnd_toEndOf="parent"
@@ -51,11 +59,14 @@
 
     <EditText
         android:id="@+id/password"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
         android:ems="10"
         android:hint="Password"
         android:inputType="textPassword"
+        android:layout_width="291dp"
+        android:layout_height="47dp"
+        android:background="@android:color/white"
+        android:fontFamily="@font/poppinslight"
+        android:textSize="15dp"
         app:layout_constraintBottom_toBottomOf="@+id/imageView3"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.474"
@@ -65,8 +76,11 @@
 
     <Spinner
         android:id="@+id/university"
-        android:layout_width="216dp"
-        android:layout_height="50dp"
+        android:layout_width="291dp"
+        android:layout_height="47dp"
+        android:background="@android:color/white"
+        android:fontFamily="@font/poppinslight"
+        android:textSize="15dp"
         android:hint=""
         android:entries="@array/universities"
         app:layout_constraintBottom_toBottomOf="@+id/imageView3"
@@ -80,29 +94,12 @@
         android:id="@+id/imageView3"
         android:layout_width="124dp"
         android:layout_height="65dp"
-        android:background="@drawable/union_2"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.466"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="1.0" />
-
-    <TextView
-        android:id="@+id/textView5"
-        style="@android:style/Widget.DeviceDefault.Light.TextView"
-        android:layout_width="126dp"
-        android:layout_height="67dp"
-        android:text="Sign-up"
-        android:textAppearance="@style/TextAppearance.AppCompat.Large"
-        app:autoSizeTextType="uniform"
-        app:fontFamily="sans-serif-medium"
-        app:layout_constraintBottom_toBottomOf="@+id/imageView3"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.463"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.32" />
 
     <Button
         android:id="@+id/register"
@@ -125,26 +122,24 @@
 
     <Button
         android:id="@+id/signin"
-        android:layout_width="177dp"
-        android:layout_height="40dp"
-        android:background="@android:color/transparent"
+        android:layout_width="206dp"
+        android:layout_height="50dp"
+        android:background="@color/design_default_color_surface"
         android:fontFamily="@font/poppinslight"
         android:stateListAnimator="@null"
         android:text="Login"
         android:textAllCaps="false"
         android:textSize="16dp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.25" />
 
     <Button
         android:id="@+id/signup"
-        android:layout_width="204dp"
-        android:layout_height="40dp"
-        android:background="@android:color/transparent"
+        android:layout_width="205dp"
+        android:layout_height="50dp"
+        android:background="@color/design_default_color_surface"
         android:fontFamily="@font/poppins"
         android:stateListAnimator="@null"
         android:text="Sign Up"
@@ -153,15 +148,14 @@
         app:layout_constraintBottom_toBottomOf="@+id/imageView3"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="@+id/signin"
+        app:layout_constraintStart_toEndOf="@+id/signin"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.25" />
 
     <ImageView
-        android:id="@+id/imageView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_constraintBottom_toTopOf="@+id/textView5"
+        app:layout_constraintBottom_toTopOf="@+id/signup"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"

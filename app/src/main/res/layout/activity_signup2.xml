@@ -8,21 +8,28 @@
 
     <EditText
         android:id="@+id/courseDuration"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="291dp"
+        android:layout_height="47dp"
+        android:background="@android:color/white"
         android:ems="10"
+        android:fontFamily="@font/poppinslight"
         android:hint="Remaining Years at Uni"
         android:inputType="number"
+        android:textSize="15dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.491"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.593" />
+        app:layout_constraintVertical_bias="0.513" />
 
     <EditText
         android:id="@+id/course"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="291dp"
+        android:layout_height="47dp"
+        android:background="@android:color/white"
+        android:fontFamily="@font/poppinslight"
+        android:textSize="15dp"
         android:ems="10"
         android:hint="University Course"
         android:inputType="textPersonName"
@@ -35,11 +42,14 @@
 
     <Button
         android:id="@+id/confirm"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:background="@drawable/rectangle10"
-        android:hint="Confirm"
-        android:textColor="@android:color/white"
+        android:layout_width="300dp"
+        android:layout_height="52dp"
+        android:layout_marginBottom="64dp"
+        android:background="@drawable/custombutton"
+        android:fontFamily="@font/poppisnmedium"
+        android:gravity="center"
+        android:text="CONFRIM"
+        android:textColor="@color/common_google_signin_btn_text_dark_default"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.495"
@@ -49,13 +59,15 @@
 
     <Spinner
         android:id="@+id/chooseNationality"
-        android:layout_width="210dp"
-        android:layout_height="48dp"
+        android:layout_width="291dp"
+        android:layout_height="47dp"
+        android:background="@android:color/white"
         android:entries="@array/nationalities"
+        android:fontFamily="@font/poppinslight"
+        android:textSize="15dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.276" />
+        app:layout_constraintVertical_bias="0.334" />
 </androidx.constraintlayout.widget.ConstraintLayout>

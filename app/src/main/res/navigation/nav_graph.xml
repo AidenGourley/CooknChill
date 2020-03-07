@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:id="@+id/nav_graph"
     app:startDestination="@id/homeFragment">
     <fragment
         android:id="@+id/editProfileFragment"
@@ -9,7 +8,10 @@
         android:label="EditProfileFragment" >
         <action
             android:id="@+id/action_editProfileFragment_to_homeFragment"
-            app:destination="@id/homeFragment" />
+            app:destination="@+id/homeFragment"
+            app:enterAnim="@anim/nav_default_enter_anim"
+            app:exitAnim="@anim/nav_default_exit_anim"
+            app:popUpTo="@+id/homeFragment" />
     </fragment>
     <fragment
         android:id="@+id/homeFragment"
@@ -17,11 +19,10 @@
         android:label="HomeFragment" >
 
         <action
-            app:popUpTo="@id/homeFragment"
-            app:popUpToInclusive="false"
             android:id="@+id/action_homeFragment_to_editProfileFragment"
             app:destination="@id/editProfileFragment"
-            app:enterAnim="@anim/nav_default_pop_enter_anim"
-            app:exitAnim="@anim/nav_default_pop_exit_anim" />
+            app:enterAnim="@anim/nav_default_enter_anim"
+            app:exitAnim="@anim/nav_default_exit_anim"
+            app:popUpTo="@id/homeFragment" />
     </fragment>
 </navigation>

@@ -17,6 +17,7 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
@@ -25,12 +26,28 @@ public class SignUpActivity extends AppCompatActivity {
     Spinner uniChoice;
     Button register, signIn;
     FirebaseAuth mFirebaseAuth;
+    private FirebaseAuth.AuthStateListener mAuthStateListener;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_signup);
         mFirebaseAuth = FirebaseAuth.getInstance();
+        mAuthStateListener = new FirebaseAuth.AuthStateListener() {
+            @Override
+            public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
+                FirebaseUser mFirebaseUser = mFirebaseAuth.getCurrentUser();
+                if( mFirebaseUser != null ){
+                    Intent intent = new Intent(SignUpActivity.this,MainActivity.class);
+                    Toast.makeText(SignUpActivity.this,"You are logged in",Toast.LENGTH_SHORT).show();
+                    intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                    startActivity(intent);
+                }
+                else{
+                    Toast.makeText(SignUpActivity.this,"Please Login",Toast.LENGTH_SHORT).show();
+                }
+            }
+        };
 
         email = findViewById(R.id.email);
         uniChoice = findViewById(R.id.university);
@@ -40,15 +57,6 @@ public class SignUpActivity extends AppCompatActivity {
         register = findViewById(R.id.register);
         signIn = findViewById(R.id.signin);
 
-        /**
-        university.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-            @Override
-            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                Toast.makeText(SignUpActivity.this, "You Select Position: ", Toast.LENGTH_SHORT).show();
-                selectedUni. = parent.getItemAtPosition(position).toString();
-            }
-        });
-        **/
 
         register.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -115,5 +123,11 @@ public class SignUpActivity extends AppCompatActivity {
                 startActivity(i);
             }
         });
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        mFirebaseAuth.addAuthStateListener(mAuthStateListener);
     }
 }

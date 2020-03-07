@@ -7,21 +7,21 @@
     tools:context=".auth.LoginActivity">
 
     <ImageView
-        android:id="@+id/imageView2"
+        android:id="@+id/imageView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_constraintBottom_toTopOf="@+id/textView3"
+        app:layout_constraintBottom_toTopOf="@+id/signup"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/cook_n_chill_logo" />
 
+
     <Button
-        android:id="@+id/button5"
-        android:layout_width="200dp"
+        android:id="@+id/button"
+        android:layout_width="205dp"
         android:layout_height="50dp"
-        android:layout_marginEnd="200dp"
-        android:background="@android:color/transparent"
+        android:background="@color/design_default_color_surface"
         android:fontFamily="@font/poppins"
         android:stateListAnimator="@null"
         android:text="Login"
@@ -34,12 +34,11 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.258" />
 
-
     <Button
         android:id="@+id/signup"
-        android:layout_width="200dp"
+        android:layout_width="205dp"
         android:layout_height="50dp"
-        android:background="@android:color/transparent"
+        android:background="@color/design_default_color_surface"
         android:fontFamily="@font/poppinslight"
         android:stateListAnimator="@null"
         android:text="Sign Up"
@@ -47,42 +46,10 @@
         android:textSize="16dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.947"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.258" />
-
-    <TextView
-        android:id="@+id/textView3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="392dp"
-        android:fontFamily="@font/poppinsbold"
-        android:text="Welcome"
-        android:textColor="#1A1A1A"
-        android:textSize="49dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.421"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.95" />
-
-    <TextView
-        android:id="@+id/textView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="24dp"
-        android:fontFamily="@font/poppinslight"
-        android:text="You can now enter your credentials to login to \nCook N' Chill and start exploring the cooking world!"
-        android:textColor="#1A1A1A"
-        android:textSize="12dp"
-        app:layout_constraintBottom_toTopOf="@+id/email"
-        app:layout_constraintHorizontal_bias="0.438"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="1.0" />
 
     <EditText
         android:id="@+id/email"
@@ -92,12 +59,13 @@
         android:fontFamily="@font/poppinslight"
         android:hint="Email Address"
         android:textSize="15dp"
+        android:inputType="textEmailAddress"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.433"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.611" />
+        app:layout_constraintTop_toBottomOf="@+id/imageView"
+        app:layout_constraintVertical_bias="0.359" />
 
     <EditText
         android:id="@+id/password"
@@ -107,12 +75,13 @@
         android:fontFamily="@font/poppinslight"
         android:hint="Password"
         android:textSize="15dp"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:inputType="textPassword"
+        app:layout_constraintBottom_toTopOf="@+id/register"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.433"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.707" />
+        app:layout_constraintTop_toBottomOf="@+id/email"
+        app:layout_constraintVertical_bias="0.068" />
 
     <Button
         android:id="@+id/register"
@@ -131,20 +100,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.839" />
-
-    <ImageView
-        android:id="@+id/imageView6"
-        android:layout_width="126dp"
-        android:layout_height="59dp"
-        android:layout_marginEnd="88dp"
-        android:layout_marginBottom="60dp"
-        android:background="@drawable/union_2"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.72"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="1.0" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
