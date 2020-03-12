@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".auth.LoginActivity"
+    tools:ignore="ExtraText">
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toTopOf="@+id/signup"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/cook_n_chill_logo" />
+
+
+    <Button
+        android:id="@+id/backtosignin"
+        android:layout_width="300dp"
+        android:layout_height="52dp"
+        android:background="@drawable/custombutton"
+        android:fontFamily="@font/poppisnmedium"
+        android:gravity="center"
+        android:paddingLeft="10dp"
+        android:text="Back to Login"
+        android:textAllCaps="false"
+        android:textColor="@android:color/white"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.333"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.687" />
+
+    <TextView
+        android:id="@+id/check_address"
+        android:layout_width="386dp"
+        android:layout_height="45dp"
+        android:background="@color/design_default_color_surface"
+        android:fontFamily="@font/poppinsbold"
+        android:text="Please Check Your Email Address"
+        android:textSize="22dp"
+        tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteX="12dp"
+        tools:layout_editor_absoluteY="202dp" />
+
+    <TextView
+        android:id="@+id/email_guide"
+        android:layout_width="389dp"
+        android:layout_height="93dp"
+        android:background="@color/design_default_color_surface"
+        android:fontFamily="@font/poppinslight"
+        android:text="If you have provided a valid email address you will recieve a password reset email.If you don't recieve an email, you will need to try again.Also,please check your spam folder."
+        android:textSize="15dp"
+        tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteX="9dp"
+        tools:layout_editor_absoluteY="270dp" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
