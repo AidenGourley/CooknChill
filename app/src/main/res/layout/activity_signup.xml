@@ -161,15 +161,18 @@
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/cook_n_chill_logo" />
 
-    <TextView
-        android:id="@+id/textView3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+    <Button
+        android:id="@+id/forgottenPassword"
+        android:layout_width="128dp"
+        android:layout_height="22dp"
+        android:background="#00FFFFFF"
         android:fontFamily="@font/poppinslight"
-        android:text="Forgot Password? Click HERE"
-        tools:ignore="MissingConstraints"
-        tools:layout_editor_absoluteX="55dp"
-        tools:layout_editor_absoluteY="678dp" />
+        android:text="Forgot Password?"
+        android:textAllCaps="false"
+        app:layout_constraintBottom_toBottomOf="@+id/imageView3"
+        app:layout_constraintTop_toTopOf="@+id/imageView3"
+        app:layout_constraintVertical_bias="0.395"
+        tools:layout_editor_absoluteX="57dp" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
