@@ -24,7 +24,7 @@ import com.google.firebase.database.FirebaseDatabase;
 public class SignUpActivity extends AppCompatActivity {
     EditText email, password, firstName, surname;
     Spinner uniChoice;
-    Button register, signIn;
+    Button register, signIn, forgottenPassword;
     FirebaseAuth mFirebaseAuth;
     private FirebaseAuth.AuthStateListener mAuthStateListener;
 
@@ -56,6 +56,7 @@ public class SignUpActivity extends AppCompatActivity {
         password = findViewById(R.id.password);
         register = findViewById(R.id.register);
         signIn = findViewById(R.id.signin);
+        forgottenPassword = findViewById(R.id.forgottenPassword);
 
 
         register.setOnClickListener(new View.OnClickListener() {
@@ -120,6 +121,14 @@ public class SignUpActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent i = new Intent(SignUpActivity.this,LoginActivity.class);
+                startActivity(i);
+            }
+        });
+
+        forgottenPassword.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v){
+                Intent i = new Intent(SignUpActivity.this, ForgottenLogicActivity.class);
                 startActivity(i);
             }
         });
