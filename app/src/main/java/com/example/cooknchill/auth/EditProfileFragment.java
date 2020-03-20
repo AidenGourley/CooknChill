@@ -16,13 +16,10 @@ import android.view.ViewGroup;
 import com.example.cooknchill.R;
 
 import android.content.Intent;
-import android.graphics.Bitmap;
-import android.provider.MediaStore;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 
-import android.app.ProgressDialog;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -33,13 +30,11 @@ import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
-import com.google.firebase.storage.OnProgressListener;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.UploadTask;
@@ -56,8 +51,6 @@ public class EditProfileFragment extends Fragment {
     FirebaseStorage storage;
     StorageReference storageReference;
     FirebaseAuth mFirebaseAuth;
-    FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
-    final DatabaseReference dbRef = FirebaseDatabase.getInstance().getReference().child(user.getUid());
     Uri filePath;
     Button btnEditPhoto, btnSubmit, btnCancel, btnDeleteProfile;
     ImageView imageView;
@@ -67,8 +60,6 @@ public class EditProfileFragment extends Fragment {
 
     final int PICK_IMAGE_REQUEST = 71;
 
-    private FirebaseAuth.AuthStateListener mAuthStateListener;
-
     private void chooseImage() {
         Intent intent = new Intent();
         intent.setType("image/*");
@@ -76,38 +67,35 @@ public class EditProfileFragment extends Fragment {
         startActivityForResult(Intent.createChooser(intent, "Select Picture"), PICK_IMAGE_REQUEST);
     }
 
-    private void uploadImage() {
-
+    private void uploadImage(final String userID, Uri filePath) {
+        StorageReference storageReference = FirebaseStorage.getInstance().getReference().child(userID);
         if (filePath != null) {
-            final ProgressDialog progressDialog = new ProgressDialog(this.getContext());
-            progressDialog.setTitle("Uploading...");
-            progressDialog.show();
-
-            final StorageReference ref = storageReference.child(user.getUid() + "/profilePic");
+            final StorageReference ref = storageReference.child("profilePic");
             ref.putFile(filePath)
                     .addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
+                        DatabaseReference dbRef = FirebaseDatabase.getInstance().getReference().child("users").child(userID);
                         @Override
                         public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
-                            progressDialog.dismiss();
-                            dbRef.child(user.getUid()).child("profilePic").setValue(ref.getDownloadUrl().toString());
-                            Toast.makeText(getActivity(), "Uploaded", Toast.LENGTH_SHORT).show();//context issue?
+                            ref.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
+                                @Override
+                                public void onSuccess(Uri downloadUrl) {
+                                    System.out.println("Profile Picture Upload Success! URL: " + downloadUrl.toString());
+                                    dbRef.child("profilePic").setValue(downloadUrl.toString());
+                                    Toast.makeText(getActivity(), "Uploaded", Toast.LENGTH_SHORT).show();
+                                }
+                            });
                         }
                     })
                     .addOnFailureListener(new OnFailureListener() {
                         @Override
                         public void onFailure(@NonNull Exception e) {
-                            progressDialog.dismiss();
+                            System.out.println("Profile Picture Upload Failed: Couldn't save file to storage");
                             Toast.makeText(getActivity(), "Failed " + e.getMessage(), Toast.LENGTH_SHORT).show();
                         }
-                    })
-                    .addOnProgressListener(new OnProgressListener<UploadTask.TaskSnapshot>() {
-                        @Override
-                        public void onProgress(UploadTask.TaskSnapshot taskSnapshot) {
-                            double progress = (100.0 * taskSnapshot.getBytesTransferred() / taskSnapshot
-                                    .getTotalByteCount());
-                            progressDialog.setMessage("Uploaded " + (int) progress + "%");
-                        }
                     });
+        }
+        else{
+            System.out.println("Profile Picture Upload Failed: filePath null");
         }
     }
 
@@ -118,6 +106,7 @@ public class EditProfileFragment extends Fragment {
         return inflater.inflate(R.layout.fragment_edit_profile, container, false);
     }
 
+
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
@@ -125,17 +114,11 @@ public class EditProfileFragment extends Fragment {
                 && data != null && data.getData() != null )
         {
             filePath = data.getData();
-            try {
-                Bitmap bitmap = MediaStore.Images.Media.getBitmap(
-                        getActivity().getContentResolver(), filePath); //Dirty work-around
-                imageView.setImageBitmap(bitmap);
-            }
-            catch (java.io.IOException e)
-            {
-                e.printStackTrace();
-            }
+            uploadImage(mFirebaseAuth.getCurrentUser().getUid(), filePath);
         }
     }
+
+
 
 
     @Override
@@ -163,7 +146,7 @@ public class EditProfileFragment extends Fragment {
         storage = FirebaseStorage.getInstance();
         storageReference = storage.getReference();
 
-        final DatabaseReference dbRef = FirebaseDatabase.getInstance().getReference("users").child(user.getUid());
+        final DatabaseReference dbRef = FirebaseDatabase.getInstance().getReference("users").child(mFirebaseAuth.getCurrentUser().getUid());
 
 
         dbRef.addValueEventListener(new ValueEventListener() {
@@ -200,7 +183,6 @@ public class EditProfileFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 chooseImage();
-                uploadImage();
             }
         });
 
@@ -224,8 +206,7 @@ public class EditProfileFragment extends Fragment {
                             if (!dp3.equals("Select Nationality")) {
                                 dbRef.child("dishPreference3").setValue(dp3);
                             }
-                            //startActivity(new Intent(EditProfileFragment.this, HomeActivity.class));
-                            //navController.navigate(R.id.action_startFragment_to_gameFragment);
+
                             Toast.makeText(getActivity(), "Updated Successfully!", Toast.LENGTH_SHORT).show();
                         } else {
                             Toast.makeText(getActivity(), "Oops, something's gone wrong... Please try again!", Toast.LENGTH_SHORT).show();
@@ -249,7 +230,7 @@ public class EditProfileFragment extends Fragment {
                 dbRef.removeValue().addOnSuccessListener(new OnSuccessListener<Void>() {
                     @Override
                     public void onSuccess(Void aVoid) {
-                        user.delete().addOnSuccessListener(new OnSuccessListener<Void>() {
+                        mFirebaseAuth.getCurrentUser().delete().addOnSuccessListener(new OnSuccessListener<Void>() {
                             @Override
                             public void onSuccess(Void aVoid) {
                                 navController.popBackStack();
