@@ -24,8 +24,6 @@ import com.google.firebase.auth.FirebaseAuth;
 
 public class LoginFragment extends Fragment {
 
-    private EditText emailId, password;
-    private Button btnSignIn, signUp, forgottenPassword;
     private FirebaseAuth mFirebaseAuth;
 
 
@@ -47,6 +45,8 @@ public class LoginFragment extends Fragment {
         mFirebaseAuth = FirebaseAuth.getInstance();
         final NavController navController = Navigation.findNavController(view);
 
+        Button btnSignIn, signUp, forgottenPassword;
+        final EditText emailId, password;
         emailId = view.findViewById(R.id.email);
         password = view.findViewById(R.id.password);
         btnSignIn = view.findViewById(R.id.register);

@@ -22,8 +22,6 @@ import com.google.firebase.auth.FirebaseAuth;
 
 public class ForgottenLoginFragment extends Fragment {
 
-    private EditText email;
-    private Button btnSendEmail, btnSignIn, btnSignUp;
     private FirebaseAuth mFirebaseAuth;
 
 
@@ -44,9 +42,10 @@ public class ForgottenLoginFragment extends Fragment {
         mFirebaseAuth = FirebaseAuth.getInstance();
         final NavController navController = Navigation.findNavController(view);
 
+        Button btnSendEmail, btnSignIn, btnSignUp;
         btnSignUp = view.findViewById(R.id.signUp);
         btnSignIn = view.findViewById(R.id.signIn);
-        email = view.findViewById(R.id.email);
+        final EditText email = view.findViewById(R.id.email);
         btnSendEmail= view.findViewById(R.id.sendemail);
 
         btnSendEmail.setOnClickListener(new View.OnClickListener() {

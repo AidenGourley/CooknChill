@@ -1,7 +1,17 @@
 package com.example.cooknchill.auth;
 
+import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.ImageView;
+import android.widget.Spinner;
+import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -9,22 +19,8 @@ import androidx.fragment.app.Fragment;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-
-import com.example.cooknchill.R;
-
-import android.content.Intent;
-import android.widget.Button;
-import android.widget.EditText;
-import android.widget.ImageView;
-
-import android.widget.Spinner;
-import android.widget.TextView;
-import android.widget.Toast;
-
 import com.bumptech.glide.Glide;
+import com.example.cooknchill.R;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -35,8 +31,8 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
-import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
 
 import static android.app.Activity.RESULT_OK;
@@ -44,21 +40,19 @@ import static android.app.Activity.RESULT_OK;
 
 public class EditProfileFragment extends Fragment {
 
+    private final int PICK_IMAGE_REQUEST = 71;
+    private StorageReference storageReference;
+    private FirebaseAuth mFirebaseAuth;
+    private ImageView imageView;
+    private EditText bioText;
+    private TextView dishPreferenceText1, dishPreferenceText2, dishPreferenceText3;
+    private Spinner dishPriority1, dishPriority2, dishPriority3;
+
+
     public EditProfileFragment() {
         // Required empty public constructor
     }
 
-    FirebaseStorage storage;
-    StorageReference storageReference;
-    FirebaseAuth mFirebaseAuth;
-    Uri filePath;
-    Button btnEditPhoto, btnSubmit, btnCancel, btnDeleteProfile;
-    ImageView imageView;
-    EditText bioText;
-    TextView dishPreferenceText1, dishPreferenceText2, dishPreferenceText3;
-    Spinner dishPriority1, dishPriority2, dishPriority3;
-
-    final int PICK_IMAGE_REQUEST = 71;
 
     private void chooseImage() {
         Intent intent = new Intent();
@@ -68,7 +62,7 @@ public class EditProfileFragment extends Fragment {
     }
 
     private void uploadImage(final String userID, Uri filePath) {
-        StorageReference storageReference = FirebaseStorage.getInstance().getReference().child(userID);
+        storageReference = FirebaseStorage.getInstance().getReference().child(userID);
         if (filePath != null) {
             final StorageReference ref = storageReference.child("profilePic");
             ref.putFile(filePath)
@@ -113,7 +107,7 @@ public class EditProfileFragment extends Fragment {
         if(requestCode == PICK_IMAGE_REQUEST && resultCode == RESULT_OK
                 && data != null && data.getData() != null )
         {
-            filePath = data.getData();
+            Uri filePath = data.getData();
             uploadImage(mFirebaseAuth.getCurrentUser().getUid(), filePath);
         }
     }
@@ -130,6 +124,7 @@ public class EditProfileFragment extends Fragment {
         super.onCreate(savedInstanceState);
         mFirebaseAuth = FirebaseAuth.getInstance();
 
+        Button btnEditPhoto, btnSubmit, btnCancel, btnDeleteProfile;
         btnDeleteProfile = view.findViewById(R.id.deleteAccount);
         btnEditPhoto = view.findViewById(R.id.editPhoto);
         btnSubmit = view.findViewById(R.id.submit);
@@ -143,10 +138,11 @@ public class EditProfileFragment extends Fragment {
         dishPreferenceText2 = view.findViewById(R.id.dishPreferenceText2);
         dishPreferenceText3 = view.findViewById(R.id.dishPreferenceText3);
 
-        storage = FirebaseStorage.getInstance();
+        FirebaseStorage storage = FirebaseStorage.getInstance();
         storageReference = storage.getReference();
 
-        final DatabaseReference dbRef = FirebaseDatabase.getInstance().getReference("users").child(mFirebaseAuth.getCurrentUser().getUid());
+        final DatabaseReference dbRef;
+        dbRef = FirebaseDatabase.getInstance().getReference("users").child(mFirebaseAuth.getCurrentUser().getUid());
 
 
         dbRef.addValueEventListener(new ValueEventListener() {
@@ -236,7 +232,6 @@ public class EditProfileFragment extends Fragment {
                                 navController.popBackStack();
                                 Intent i = new Intent(getActivity(), AuthenticationActivity.class);
                                 startActivity(i);
-                                getActivity().finish();
                             }
                         });
                     }

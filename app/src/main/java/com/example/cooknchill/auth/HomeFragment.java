@@ -6,11 +6,11 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import androidx.navigation.NavController;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 
 import com.example.cooknchill.R;
@@ -18,9 +18,6 @@ import com.google.firebase.auth.FirebaseAuth;
 
 
 public class HomeFragment extends Fragment {
-
-    private Button btnLogout, btnEditProfile;
-    FirebaseAuth mFirebaseAuth;
 
 
     public HomeFragment() {
@@ -37,8 +34,9 @@ public class HomeFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        mFirebaseAuth = FirebaseAuth.getInstance();
         final NavController navController = Navigation.findNavController(view);
+
+        Button btnLogout, btnEditProfile;
         btnLogout = view.findViewById(R.id.logout);
         btnEditProfile = view.findViewById(R.id.editProfile);
 

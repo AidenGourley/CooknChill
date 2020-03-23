@@ -5,17 +5,17 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
+
 import com.example.cooknchill.R;
 
 
 public class ForgottenLoginPhase2Fragment extends Fragment {
-
-    private Button btnSignIn;
 
 
     public ForgottenLoginPhase2Fragment() {
@@ -34,6 +34,7 @@ public class ForgottenLoginPhase2Fragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
         final NavController navController = Navigation.findNavController(view);
 
+        Button btnSignIn;
         btnSignIn = view.findViewById(R.id.signIn);
 
         btnSignIn.setOnClickListener(new View.OnClickListener() {
