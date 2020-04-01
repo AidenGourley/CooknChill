@@ -10,7 +10,6 @@ import androidx.navigation.NavController;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.Navigation;
 
@@ -20,9 +19,8 @@ import com.google.firebase.auth.FirebaseAuth;
 
 public class HomeFragment extends Fragment {
 
-    Button btnLogout, btnEditProfile;
+    private Button btnLogout, btnEditProfile;
     FirebaseAuth mFirebaseAuth;
-    private FirebaseAuth.AuthStateListener mAuthStateListener;
 
 
     public HomeFragment() {
@@ -48,8 +46,10 @@ public class HomeFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 FirebaseAuth.getInstance().signOut();
-                Intent intToMain = new Intent(getActivity(), LoginActivity.class);
-                startActivity(intToMain);
+                navController.popBackStack();
+                Intent i = new Intent(getActivity(), AuthenticationActivity.class);
+                getActivity().finish();
+                startActivity(i);
             }
         });
 
@@ -57,8 +57,6 @@ public class HomeFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 navController.navigate(R.id.action_homeFragment_to_editProfileFragment);
-                //Intent intToEditProfile = new Intent(getActivity(), EditProfileActivity.class);
-                //startActivity(intToEditProfile);
             }
         });
     }

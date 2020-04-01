@@ -1,6 +1,5 @@
 package com.example.cooknchill.auth;
 
-import android.content.Context;
 import android.net.Uri;
 import android.os.Bundle;
 
@@ -14,30 +13,21 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.bumptech.glide.load.resource.drawable.GlideDrawable;
-import com.bumptech.glide.manager.SupportRequestManagerFragment;
-import com.bumptech.glide.request.target.Target;
 import com.example.cooknchill.R;
 
 import android.content.Intent;
 import android.graphics.Bitmap;
-import android.net.Uri;
-import android.os.Bundle;
 import android.provider.MediaStore;
-import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
 import android.app.ProgressDialog;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
-import com.example.cooknchill.R;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -153,16 +143,8 @@ public class EditProfileFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
 
         final NavController navController = Navigation.findNavController(view);
-        Button button = view.findViewById(R.id.cancel);
-        button.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                navController.navigate(R.id.action_editProfileFragment_to_homeFragment);
-            }
-        });
 
         super.onCreate(savedInstanceState);
-        //setContentView(R.layout.activity_editprofile);
         mFirebaseAuth = FirebaseAuth.getInstance();
 
         btnDeleteProfile = view.findViewById(R.id.deleteAccount);
@@ -257,7 +239,6 @@ public class EditProfileFragment extends Fragment {
         btnCancel.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //startActivity(new Intent(EditProfileActivity.this, HomeActivity.class));
                 navController.navigate(R.id.action_editProfileFragment_to_homeFragment);
             }
         });
@@ -271,8 +252,10 @@ public class EditProfileFragment extends Fragment {
                         user.delete().addOnSuccessListener(new OnSuccessListener<Void>() {
                             @Override
                             public void onSuccess(Void aVoid) {
-                                startActivity(new Intent(getActivity(), SignUpActivity.class));
-                                //navController.navigate(R.id.action_startFragment_to_gameFragment);
+                                navController.popBackStack();
+                                Intent i = new Intent(getActivity(), AuthenticationActivity.class);
+                                startActivity(i);
+                                getActivity().finish();
                             }
                         });
                     }

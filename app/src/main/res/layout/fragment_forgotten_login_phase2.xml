@@ -4,22 +4,25 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".auth.LoginActivity"
+    android:alpha="1"
+    android:background="#FFFCFD"
+    tools:context=".auth.ForgottenLoginPhase2Fragment"
     tools:ignore="ExtraText">
+
 
     <ImageView
         android:id="@+id/imageView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_constraintBottom_toTopOf="@+id/signup"
+        android:layout_marginTop="40dp"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.489"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/cook_n_chill_logo" />
 
-
     <Button
-        android:id="@+id/backtosignin"
+        android:id="@+id/signIn"
         android:layout_width="300dp"
         android:layout_height="52dp"
         android:background="@drawable/custombutton"
@@ -31,33 +34,41 @@
         android:textColor="@android:color/white"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.333"
+        app:layout_constraintHorizontal_bias="0.495"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.687" />
+        app:layout_constraintVertical_bias="0.807" />
 
     <TextView
         android:id="@+id/check_address"
         android:layout_width="386dp"
         android:layout_height="45dp"
-        android:background="@color/design_default_color_surface"
+        android:layout_marginTop="96dp"
         android:fontFamily="@font/poppinsbold"
         android:text="Please Check Your Email Address"
+        android:textAlignment="center"
         android:textSize="22dp"
-        tools:ignore="MissingConstraints"
-        tools:layout_editor_absoluteX="12dp"
-        tools:layout_editor_absoluteY="202dp" />
+        app:layout_constraintBottom_toTopOf="@+id/signIn"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.48"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageView"
+        app:layout_constraintVertical_bias="0.0"
+        tools:ignore="MissingConstraints" />
 
     <TextView
         android:id="@+id/email_guide"
-        android:layout_width="389dp"
+        android:layout_width="385dp"
         android:layout_height="93dp"
-        android:background="@color/design_default_color_surface"
+        android:layout_marginBottom="164dp"
         android:fontFamily="@font/poppinslight"
         android:text="If you have provided a valid email address you will recieve a password reset email.If you don't recieve an email, you will need to try again.Also,please check your spam folder."
+        android:textAlignment="center"
         android:textSize="15dp"
-        tools:ignore="MissingConstraints"
-        tools:layout_editor_absoluteX="9dp"
-        tools:layout_editor_absoluteY="270dp" />
+        app:layout_constraintBottom_toTopOf="@+id/signIn"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/check_address"
+        tools:ignore="MissingConstraints" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

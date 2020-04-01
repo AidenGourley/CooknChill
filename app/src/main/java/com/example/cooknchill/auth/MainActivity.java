@@ -13,7 +13,8 @@ import android.os.Bundle;
 import com.example.cooknchill.R;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity{
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,7 +32,5 @@ public class MainActivity extends AppCompatActivity {
                 .replace(R.id.MainActivityNavHostFrag, mFragment).commit();
 
     }
-
-
-    }
+}
 
