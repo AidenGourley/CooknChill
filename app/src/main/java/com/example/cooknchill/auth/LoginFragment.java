@@ -2,6 +2,7 @@ package com.example.cooknchill.auth;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.SystemClock;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -25,6 +26,7 @@ import com.google.firebase.auth.FirebaseAuth;
 public class LoginFragment extends Fragment {
 
     private FirebaseAuth mFirebaseAuth;
+    private long mLastClickTime = 0;
 
 
     public LoginFragment() {
@@ -45,7 +47,7 @@ public class LoginFragment extends Fragment {
         mFirebaseAuth = FirebaseAuth.getInstance();
         final NavController navController = Navigation.findNavController(view);
 
-        Button btnSignIn, signUp, forgottenPassword;
+        final Button btnSignIn, signUp, forgottenPassword;
         final EditText emailId, password;
         emailId = view.findViewById(R.id.email);
         password = view.findViewById(R.id.password);
@@ -56,6 +58,11 @@ public class LoginFragment extends Fragment {
         btnSignIn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                // Preventing multiple clicks, using threshold of 1 second
+                if (SystemClock.elapsedRealtime() - mLastClickTime < 1000) {
+                    return;
+                }
+                mLastClickTime = SystemClock.elapsedRealtime();
                 String email = emailId.getText().toString();
                 String pwd = password.getText().toString();
                 if(email.isEmpty()){
@@ -71,7 +78,6 @@ public class LoginFragment extends Fragment {
                         @Override
                         public void onComplete(@NonNull Task<AuthResult> task) {
                             if(task.isSuccessful()){
-                                navController.popBackStack();
                                 Intent i = new Intent(getActivity(), MainActivity.class);
                                 getActivity().finish();
                                 startActivity(i);
@@ -88,6 +94,11 @@ public class LoginFragment extends Fragment {
         signUp.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                // Preventing multiple clicks, using threshold of 1 second
+                if (SystemClock.elapsedRealtime() - mLastClickTime < 1000) {
+                    return;
+                }
+                mLastClickTime = SystemClock.elapsedRealtime();
                 navController.navigate(R.id.action_loginFragment_to_signUpFragment);
             }
         });
@@ -95,6 +106,11 @@ public class LoginFragment extends Fragment {
         forgottenPassword.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v){
+                // Preventing multiple clicks, using threshold of 1 second
+                if (SystemClock.elapsedRealtime() - mLastClickTime < 1000) {
+                    return;
+                }
+                mLastClickTime = SystemClock.elapsedRealtime();
                 navController.navigate(R.id.action_loginFragment_to_resetPassword);
             }
         });

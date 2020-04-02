@@ -2,6 +2,7 @@ package com.example.cooknchill.auth;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.SystemClock;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -26,7 +27,7 @@ public class SignUpPhase2Fragment extends Fragment {
 
 
     private FirebaseAuth mFirebaseAuth;
-    private FirebaseAuth.AuthStateListener mAuthStateListener;
+    private long mLastClickTime = 0;
 
 
     public SignUpPhase2Fragment() {
@@ -56,6 +57,10 @@ public class SignUpPhase2Fragment extends Fragment {
         confirm.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                // Preventing multiple clicks, using threshold of 1 second
+                if (SystemClock.elapsedRealtime() - mLastClickTime < 1000) {
+                    return;
+                }
                 final String courseText = course.getText().toString().trim();
                 final String courseDurationText = courseDuration.getText().toString().trim();
                 final String nationalityText = chooseNationality.getSelectedItem().toString().trim();
@@ -94,9 +99,9 @@ public class SignUpPhase2Fragment extends Fragment {
         });
 
     }
-    @Override
+    /*@Override
     public void onStart() {
         super.onStart();
         mFirebaseAuth.addAuthStateListener(mAuthStateListener);
-    }
+    }*/
 }

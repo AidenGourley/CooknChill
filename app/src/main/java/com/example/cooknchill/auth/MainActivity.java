@@ -25,7 +25,7 @@ public class MainActivity extends AppCompatActivity{
         NavigationUI.setupWithNavController(bottomNav, navController);
 
         Fragment mFragment;
-        mFragment = new HomeFragment();
+        mFragment = new DiscoverFragment();
         FragmentManager fragmentManager = getSupportFragmentManager();
         fragmentManager.beginTransaction()
                 .replace(R.id.MainActivityNavHostFrag, mFragment).commit();

@@ -1,6 +1,7 @@
 package com.example.cooknchill.auth;
 
 import android.os.Bundle;
+import android.os.SystemClock;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -23,6 +24,7 @@ import com.google.firebase.auth.FirebaseAuth;
 public class ForgottenLoginFragment extends Fragment {
 
     private FirebaseAuth mFirebaseAuth;
+    private long mLastClickTime = 0;
 
 
     public ForgottenLoginFragment() {
@@ -51,6 +53,10 @@ public class ForgottenLoginFragment extends Fragment {
         btnSendEmail.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                // Preventing multiple clicks, using threshold of 1 second
+                if (SystemClock.elapsedRealtime() - mLastClickTime < 1000) {
+                    return;
+                }
                 String emailText = email.getText().toString();
                 if(emailText.isEmpty()){
                     email.setError("Don't forget to enter your email address!");
@@ -82,6 +88,10 @@ public class ForgottenLoginFragment extends Fragment {
         btnSignIn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                // Preventing multiple clicks, using threshold of 1 second
+                if (SystemClock.elapsedRealtime() - mLastClickTime < 1000) {
+                    return;
+                }
                 navController.navigate(R.id.action_resetPassword_to_loginFragment);
             }
         });
@@ -89,6 +99,10 @@ public class ForgottenLoginFragment extends Fragment {
         btnSignUp.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v){
+                // Preventing multiple clicks, using threshold of 1 second
+                if (SystemClock.elapsedRealtime() - mLastClickTime < 1000) {
+                    return;
+                }
                 navController.navigate(R.id.action_resetPassword_to_signUpFragment);
             }
         });

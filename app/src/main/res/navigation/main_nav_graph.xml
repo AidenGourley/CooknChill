@@ -2,7 +2,7 @@
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    app:startDestination="@id/homeFragment" >
+    app:startDestination="@+id/discoverFragment">
 
     <fragment
         android:id="@+id/editProfileFragment"
@@ -10,24 +10,43 @@
         android:label="EditProfileFragment"
         tools:layout="@layout/fragment_edit_profile">
         <action
-            android:id="@+id/action_editProfileFragment_to_homeFragment"
-            app:destination="@+id/homeFragment"
+            android:id="@+id/action_editProfileFragment_to_discoverFragment"
+            app:destination="@+id/discoverFragment"
             app:enterAnim="@anim/nav_default_enter_anim"
             app:exitAnim="@anim/nav_default_exit_anim"
-            app:popUpTo="@+id/homeFragment" />
+            app:popUpTo="@+id/editProfileFragment" />
     </fragment>
     <fragment
-        android:id="@+id/homeFragment"
-        android:name="com.example.cooknchill.auth.HomeFragment"
-        android:label="HomeFragment"
-        tools:layout="@layout/fragment_home">
+        android:id="@+id/discoverFragment"
+        android:name="com.example.cooknchill.auth.DiscoverFragment"
+        android:label="DiscoverFragment"
+        tools:layout="@layout/fragment_discover">
 
         <action
-            android:id="@+id/action_homeFragment_to_editProfileFragment"
+            android:id="@+id/action_discoverFragment_to_editProfileFragment"
             app:destination="@id/editProfileFragment"
             app:enterAnim="@anim/nav_default_enter_anim"
             app:exitAnim="@anim/nav_default_exit_anim"
-            app:popUpTo="@id/homeFragment" />
+            app:popUpTo="@id/discoverFragment" />
+        <action
+            android:id="@+id/action_discoverFragment_to_configureDishProfileFragment2"
+            app:destination="@id/configureDishProfileFragment"
+            app:enterAnim="@anim/nav_default_enter_anim"
+            app:exitAnim="@anim/nav_default_exit_anim" />
+    </fragment>
+    <fragment
+        android:id="@+id/configureDishProfileFragment"
+        android:name="com.example.cooknchill.auth.ConfigureDishProfileFragment"
+        android:label="ConfigureDishProfileFragment"
+        tools:layout="@layout/fragment_configure_dish_profile">
+        <action
+            android:id="@+id/action_configureDishProfileFragment_to_editProfileFragment"
+            app:destination="@id/editProfileFragment"
+            app:enterAnim="@anim/nav_default_enter_anim"
+            app:exitAnim="@anim/nav_default_exit_anim" />
+        <action
+            android:id="@+id/action_configureDishProfileFragment_to_discoverFragment"
+            app:destination="@id/discoverFragment" />
     </fragment>
 
 </navigation>

@@ -4,12 +4,14 @@ public class User {
     public String uid, university,firstName,surname,course,bio,nationality,profilePic,dishPreference1,
             dishPreference2,dishPreference3;
     public int courseDuration = 0;
+    public Dishes dishes;
 
     public User(){
     }
 
     public User(String uid, String university, String firstName, String surname){
         this.uid = uid;
+        this.dishes = new Dishes(new Dish(0));
         this.university = university;
         this.firstName = firstName;
         this.surname = surname;

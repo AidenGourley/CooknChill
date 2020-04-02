@@ -1,6 +1,7 @@
 package com.example.cooknchill.auth;
 
 import android.os.Bundle;
+import android.os.SystemClock;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -28,8 +29,8 @@ import com.google.firebase.database.FirebaseDatabase;
 public class SignUpFragment extends Fragment {
 
 
-    private FirebaseAuth.AuthStateListener mAuthStateListener;
-
+    FirebaseAuth mFirebaseAuth;
+    private long mLastClickTime = 0;
 
     public SignUpFragment() {
         // Required empty public constructor
@@ -41,11 +42,10 @@ public class SignUpFragment extends Fragment {
         return inflater.inflate(R.layout.fragment_signup, container, false);
     }
 
-
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        final FirebaseAuth mFirebaseAuth = FirebaseAuth.getInstance();
+        mFirebaseAuth = FirebaseAuth.getInstance();
         final NavController navController = Navigation.findNavController(view);
 
         final EditText email, password, firstName, surname;
@@ -63,6 +63,12 @@ public class SignUpFragment extends Fragment {
         register.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                // Preventing multiple clicks, using threshold of 3 second
+                if (SystemClock.elapsedRealtime() - mLastClickTime < 3000) {
+                    return;
+                }
+                //FirebaseAuth mFirebaseAuth = FirebaseAuth.getInstance();
+                mLastClickTime = SystemClock.elapsedRealtime();
                 final FragmentActivity context = getActivity();
                 final String emailText = email.getText().toString().trim();
                 final String passwordText =password.getText().toString().trim();
@@ -93,18 +99,18 @@ public class SignUpFragment extends Fragment {
                                 String uid = FirebaseAuth.getInstance().getCurrentUser().getUid();
                                 DatabaseReference dbRef = FirebaseDatabase.getInstance().getReference("users").child(uid);
                                 User user = new User(uid, universityText, firstNameText, surnameText);
-
                                 dbRef.setValue(user).addOnCompleteListener(new OnCompleteListener<Void>() {
                                     @Override
                                     public void onComplete(@NonNull Task<Void> task) {
                                         if (task.isSuccessful()) {
-                                            navController.popBackStack(); //PREVENT BACK CLICKS
                                             navController.navigate(R.id.action_signUpFragment_to_signUpPhase2);
+
                                         } else {
                                             Toast.makeText(context, "Oops, something's gone wrong... Please try again!", Toast.LENGTH_SHORT).show();
                                         }
                                     }
                                 });
+
                             }
                             else{
                                 Toast.makeText(context, "Oops, something's gone wrong... Please try again!", Toast.LENGTH_SHORT).show();
@@ -119,6 +125,11 @@ public class SignUpFragment extends Fragment {
         signIn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                // Preventing multiple clicks, using threshold of 1 second
+                if (SystemClock.elapsedRealtime() - mLastClickTime < 1000) {
+                    return;
+                }
+                mLastClickTime = SystemClock.elapsedRealtime();
                 navController.navigate(R.id.action_signUpFragment_to_loginFragment);
             }
         });

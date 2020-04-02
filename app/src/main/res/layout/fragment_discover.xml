@@ -6,19 +6,19 @@
     android:layout_height="match_parent"
     android:alpha="1"
     android:background="#FFFCFD"
-    tools:context=".auth.HomeFragment">
+    tools:context=".auth.DiscoverFragment">
 
-    <!-- TODO: Update blank fragment layout -->
     <TextView
-        android:id="@+id/textView2"
+        android:id="@+id/dishNationalityText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="269dp"
-        android:layout_marginEnd="163dp"
         android:layout_marginStart="163dp"
         android:layout_marginTop="223dp"
+        android:layout_marginEnd="163dp"
+        android:layout_marginBottom="269dp"
+        android:text="Discover Page is Under Construction"
+        android:textAlignment="center"
         android:textSize="30sp"
-        android:text="Welcome! You are logged in"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -37,7 +37,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView2" />
+        app:layout_constraintTop_toBottomOf="@+id/dishNationalityText" />
 
     <Button
         android:id="@+id/editProfile"
@@ -53,7 +53,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.501"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView2"
+        app:layout_constraintTop_toBottomOf="@+id/dishNationalityText"
         app:layout_constraintVertical_bias="0.205" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

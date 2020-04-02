@@ -1,6 +1,7 @@
 package com.example.cooknchill.auth;
 
 import android.os.Bundle;
+import android.os.SystemClock;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -16,7 +17,7 @@ import com.example.cooknchill.R;
 
 
 public class ForgottenLoginPhase2Fragment extends Fragment {
-
+    private long mLastClickTime = 0;
 
     public ForgottenLoginPhase2Fragment() {
         // Required empty public constructor
@@ -40,6 +41,10 @@ public class ForgottenLoginPhase2Fragment extends Fragment {
         btnSignIn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v){
+                // Preventing multiple clicks, using threshold of 1 second
+                if (SystemClock.elapsedRealtime() - mLastClickTime < 1000) {
+                    return;
+                }
                 navController.navigate(R.id.action_resetPasswordPhase2_to_loginFragment);
             }
         });

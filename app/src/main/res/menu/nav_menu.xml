@@ -2,14 +2,18 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
     <item
-        android:id="@+id/homeFragment"
-        android:icon="@drawable/home_icon"
-        android:title="Home" />
+        android:id="@+id/configureDishProfileFragment"
+        android:icon="@drawable/configure_dish_profile_icon"
+        android:title="Mentor Dish" />
+
+    <item
+        android:id="@+id/discoverFragment"
+        android:icon="@drawable/discover_icon"
+        android:title="Discover" />
 
     <item
         android:id="@+id/editProfileFragment"
         android:icon="@drawable/edit_profile_icon"
         android:title="Edit Profile"/>
-
 
 </menu>

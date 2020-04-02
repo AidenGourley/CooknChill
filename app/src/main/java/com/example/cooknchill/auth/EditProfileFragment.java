@@ -3,6 +3,7 @@ package com.example.cooknchill.auth;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
+import android.os.SystemClock;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -10,7 +11,6 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Spinner;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -35,6 +35,9 @@ import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
 
+import java.util.Arrays;
+import java.util.List;
+
 import static android.app.Activity.RESULT_OK;
 
 
@@ -45,8 +48,10 @@ public class EditProfileFragment extends Fragment {
     private FirebaseAuth mFirebaseAuth;
     private ImageView imageView;
     private EditText bioText;
-    private TextView dishPreferenceText1, dishPreferenceText2, dishPreferenceText3;
     private Spinner dishPriority1, dishPriority2, dishPriority3;
+    private final List<String> nationalities = Arrays.asList("Select Nationality", "United Kingdom", "Bangladesh", "Pakistan",
+            "Italy", "Uganda");
+    private long mLastClickTime = 0;
 
 
     public EditProfileFragment() {
@@ -75,6 +80,7 @@ public class EditProfileFragment extends Fragment {
                                 public void onSuccess(Uri downloadUrl) {
                                     System.out.println("Profile Picture Upload Success! URL: " + downloadUrl.toString());
                                     dbRef.child("profilePic").setValue(downloadUrl.toString());
+
                                     Toast.makeText(getActivity(), "Uploaded", Toast.LENGTH_SHORT).show();
                                 }
                             });
@@ -124,25 +130,38 @@ public class EditProfileFragment extends Fragment {
         super.onCreate(savedInstanceState);
         mFirebaseAuth = FirebaseAuth.getInstance();
 
-        Button btnEditPhoto, btnSubmit, btnCancel, btnDeleteProfile;
+        Button btnEditPhoto, btnSubmit, btnDeleteProfile;
         btnDeleteProfile = view.findViewById(R.id.deleteAccount);
         btnEditPhoto = view.findViewById(R.id.editPhoto);
         btnSubmit = view.findViewById(R.id.submit);
-        btnCancel = view.findViewById(R.id.cancel);
         imageView = view.findViewById(R.id.imgView);
         bioText = view.findViewById(R.id.bioText);
         dishPriority1 = view.findViewById(R.id.dishPriority1);
         dishPriority2 = view.findViewById(R.id.dishPriority2);
         dishPriority3 = view.findViewById(R.id.dishPriority3);
-        dishPreferenceText1 = view.findViewById(R.id.dishPreferenceText1);
-        dishPreferenceText2 = view.findViewById(R.id.dishPreferenceText2);
-        dishPreferenceText3 = view.findViewById(R.id.dishPreferenceText3);
 
         FirebaseStorage storage = FirebaseStorage.getInstance();
         storageReference = storage.getReference();
 
         final DatabaseReference dbRef;
         dbRef = FirebaseDatabase.getInstance().getReference("users").child(mFirebaseAuth.getCurrentUser().getUid());
+
+        dbRef.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                try {
+                    String profilePicUrl = dataSnapshot.child("profilePic").getValue().toString();
+                    Glide.with(getActivity()).load(profilePicUrl).into(imageView);
+                } catch (NullPointerException e) {
+                    System.out.println("Database field couldn't be accessed. Likely user deleted account.");
+                }
+            }
+
+            @Override
+            public void onCancelled(DatabaseError error) {
+                // Failed to read value
+            }
+        });
 
 
         dbRef.addValueEventListener(new ValueEventListener() {
@@ -156,11 +175,9 @@ public class EditProfileFragment extends Fragment {
                     String dp2 = dataSnapshot.child("dishPreference2").getValue().toString();
                     String dp3 = dataSnapshot.child("dishPreference3").getValue().toString();
                     bioText.setText(bio);
-                    dishPreferenceText1.setText(dp1);
-                    dishPreferenceText2.setText(dp2);
-                    dishPreferenceText3.setText(dp3);
-                    System.out.println("Profile Picture URL: " + dataSnapshot.child("profilePic").getValue().toString());
-                    Glide.with(getActivity()).load(dataSnapshot.child("profilePic").getValue().toString()).into(imageView);
+                    dishPriority1.setSelection(nationalities.indexOf(dp1));
+                    dishPriority2.setSelection(nationalities.indexOf(dp2));
+                    dishPriority3.setSelection(nationalities.indexOf(dp3));
 
                 } catch (NullPointerException e) {
                     System.out.println("Database field couldn't be accessed. Likely user deleted account.");
@@ -178,7 +195,31 @@ public class EditProfileFragment extends Fragment {
         btnEditPhoto.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                // Preventing multiple clicks, using threshold of 1 second
+                if (SystemClock.elapsedRealtime() - mLastClickTime < 1000) {
+                    return;
+                }
+                mLastClickTime = SystemClock.elapsedRealtime();
                 chooseImage();
+                dbRef.child("profilePic").addValueEventListener(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                        // All changes ust be tried in his exception handler in case an account deletion
+                        // triggers the onChange function.
+                        try {
+                            String profilePicUrl = dataSnapshot.getValue().toString();
+                            Glide.with(getActivity()).load(profilePicUrl).into(imageView);
+                            System.out.println("Profile Picture URL: " + profilePicUrl);
+                        } catch (NullPointerException e) {
+                            System.out.println("Database field couldn't be accessed." + e);
+                        }
+                    }
+
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError databaseError) {
+
+                    }
+                });
             }
         });
 
@@ -186,6 +227,11 @@ public class EditProfileFragment extends Fragment {
         btnSubmit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                // Preventing multiple clicks, using threshold of 1 second
+                if (SystemClock.elapsedRealtime() - mLastClickTime < 1000) {
+                    return;
+                }
+                mLastClickTime = SystemClock.elapsedRealtime();
                 dbRef.child("bio").setValue(bioText.getText().toString()).addOnCompleteListener(new OnCompleteListener<Void>() {
                     @Override
                     public void onComplete(@NonNull Task<Void> task) {
@@ -203,7 +249,8 @@ public class EditProfileFragment extends Fragment {
                                 dbRef.child("dishPreference3").setValue(dp3);
                             }
 
-                            Toast.makeText(getActivity(), "Updated Successfully!", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(getActivity(), "Thanks, we've updated that for you!", Toast.LENGTH_SHORT).show();
+                            //navController.navigate(R.id.action_editProfileFragment_to_homeFragment);
                         } else {
                             Toast.makeText(getActivity(), "Oops, something's gone wrong... Please try again!", Toast.LENGTH_SHORT).show();
                         }
@@ -213,26 +260,27 @@ public class EditProfileFragment extends Fragment {
         });
 
 
-        btnCancel.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                navController.navigate(R.id.action_editProfileFragment_to_homeFragment);
-            }
-        });
 
         btnDeleteProfile.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                // Preventing multiple clicks, using threshold of 1 second
+                if (SystemClock.elapsedRealtime() - mLastClickTime < 1000) {
+                    return;
+                }
+                final FirebaseAuth mFirebaseAuth = FirebaseAuth.getInstance();
+
                 dbRef.removeValue().addOnSuccessListener(new OnSuccessListener<Void>() {
                     @Override
                     public void onSuccess(Void aVoid) {
                         mFirebaseAuth.getCurrentUser().delete().addOnSuccessListener(new OnSuccessListener<Void>() {
                             @Override
                             public void onSuccess(Void aVoid) {
-                                navController.popBackStack();
                                 Intent i = new Intent(getActivity(), AuthenticationActivity.class);
                                 startActivity(i);
+                                getActivity().finish();
                             }
+
                         });
                     }
                 });

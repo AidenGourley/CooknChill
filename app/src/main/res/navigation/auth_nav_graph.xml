@@ -13,7 +13,6 @@
             app:destination="@id/loginFragment"
             app:enterAnim="@anim/nav_default_enter_anim"
             app:exitAnim="@anim/nav_default_exit_anim"
-            app:popUpTo="@+id/loginFragment"
             app:popUpToInclusive="true" />
     </fragment>
     <fragment
@@ -44,7 +43,6 @@
             app:destination="@id/signUpPhase2"
             app:enterAnim="@anim/nav_default_enter_anim"
             app:exitAnim="@anim/nav_default_exit_anim"
-            app:popUpTo="@+id/resetPasswordPhase2"
             app:popUpToInclusive="true" />
     </fragment>
     <fragment
@@ -66,7 +64,6 @@
             app:destination="@id/resetPasswordPhase2"
             app:enterAnim="@anim/nav_default_enter_anim"
             app:exitAnim="@anim/nav_default_exit_anim"
-            app:popUpTo="@+id/resetPasswordPhase2"
             app:popUpToInclusive="true" />
     </fragment>
     <fragment

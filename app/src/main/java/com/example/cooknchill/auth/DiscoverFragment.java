@@ -17,17 +17,17 @@ import com.example.cooknchill.R;
 import com.google.firebase.auth.FirebaseAuth;
 
 
-public class HomeFragment extends Fragment {
+public class DiscoverFragment extends Fragment {
 
 
-    public HomeFragment() {
+    public DiscoverFragment() {
         // Required empty public constructor
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.fragment_home, container, false);
+        return inflater.inflate(R.layout.fragment_discover, container, false);
     }
 
 
@@ -44,7 +44,6 @@ public class HomeFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 FirebaseAuth.getInstance().signOut();
-                navController.popBackStack();
                 Intent i = new Intent(getActivity(), AuthenticationActivity.class);
                 getActivity().finish();
                 startActivity(i);
@@ -54,7 +53,7 @@ public class HomeFragment extends Fragment {
         btnEditProfile.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                navController.navigate(R.id.action_homeFragment_to_editProfileFragment);
+                navController.navigate(R.id.action_discoverFragment_to_editProfileFragment);
             }
         });
     }
