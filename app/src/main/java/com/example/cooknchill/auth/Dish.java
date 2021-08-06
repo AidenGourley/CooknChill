@@ -16,6 +16,6 @@ public class Dish {
         this.dishDescription = "";
         this.nationality = "Select Dish Culture";
         this.dishPic0 = "https://firebasestorage.googleapis.com/v0/b/cooknchill.appspot.com/o/defaultFiles%2FdefaultDishPicture0.png?alt=media&token=4759b6ce-d2ce-4f93-b361-d2a2628d1c9b";
-        this.dishPic1 = "firebasestorage.googleapis.com/v0/b/cooknchill.appspot.com/o/defaultFiles%2FdefaultDishPicture1.png?alt=media&token=852d9d71-8581-4b22-bfb4-6d0a6e0f7db3";
+        this.dishPic1 = "https://firebasestorage.googleapis.com/v0/b/cooknchill.appspot.com/o/defaultFiles%2FdefaultDishPicture1.png?alt=media&token=852d9d71-8581-4b22-bfb4-6d0a6e0f7db3";
     }
 }
