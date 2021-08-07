@@ -1,5 +1,7 @@
 package com.example.cooknchill.auth;
 
+import static android.app.Activity.RESULT_OK;
+
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
@@ -37,8 +39,6 @@ import com.google.firebase.storage.UploadTask;
 
 import java.util.Arrays;
 import java.util.List;
-
-import static android.app.Activity.RESULT_OK;
 
 
 public class EditProfileFragment extends Fragment {
@@ -204,7 +204,7 @@ public class EditProfileFragment extends Fragment {
                 dbRef.child("profilePic").addValueEventListener(new ValueEventListener() {
                     @Override
                     public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                        // All changes ust be tried in his exception handler in case an account deletion
+                        // All changes must be tried in this exception handler in case an account deletion
                         // triggers the onChange function.
                         try {
                             String profilePicUrl = dataSnapshot.getValue().toString();

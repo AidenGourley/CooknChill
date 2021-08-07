@@ -13,13 +13,28 @@ import androidx.fragment.app.Fragment;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 
+import com.daprlabs.cardstack.SwipeDeck;
 import com.example.cooknchill.R;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.storage.StorageReference;
+
+import java.util.ArrayList;
 
 
 public class DiscoverFragment extends Fragment {
 
+    private StorageReference storageReference;
+    private FirebaseAuth mFirebaseAuth;
 
+    private SwipeDeck cardStack;
+    private ArrayList<ProfileCard> profileCards;
+
+    public void populateDeck()
+    {
+        // To complete
+    }
+
+    // Constructor
     public DiscoverFragment() {
         // Required empty public constructor
     }
@@ -30,7 +45,6 @@ public class DiscoverFragment extends Fragment {
         return inflater.inflate(R.layout.fragment_discover, container, false);
     }
 
-
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
@@ -38,8 +52,10 @@ public class DiscoverFragment extends Fragment {
 
         Button btnLogout, btnEditProfile;
         btnLogout = view.findViewById(R.id.logout);
-        btnEditProfile = view.findViewById(R.id.editProfile);
 
+
+
+        // Logout Button Functionality
         btnLogout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -50,11 +66,5 @@ public class DiscoverFragment extends Fragment {
             }
         });
 
-        btnEditProfile.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                navController.navigate(R.id.action_discoverFragment_to_editProfileFragment);
-            }
-        });
     }
 }

@@ -1,4 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
+
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
@@ -8,52 +9,40 @@
     android:background="#FFFCFD"
     tools:context=".auth.DiscoverFragment">
 
-    <TextView
-        android:id="@+id/dishNationalityText"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="163dp"
-        android:layout_marginTop="223dp"
-        android:layout_marginEnd="163dp"
-        android:layout_marginBottom="269dp"
-        android:text="Discover Page is Under Construction"
-        android:textAlignment="center"
-        android:textSize="30sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
+    <!--on below line we are creating a swipe
+         frame layout for providing a swipe action-->
+    <com.daprlabs.cardstack.SwipeFrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <!--below widget is used for creating a swipe deck-->
+        <!--in below widget card spacing is the spacing between cards
+            max visible is the max number of cards which are visible
+            render above is to render the cards
+            rotation degree is the angle of card rotation when card is swipped-->
+        <com.daprlabs.cardstack.SwipeDeck
+            android:id="@+id/swipe_deck"
+            android:layout_width="match_parent"
+            android:layout_height="585dp"
+            android:padding="20dp"
+            app:card_spacing="10dp"
+            app:max_visible="3"
+            app:render_above="true"
+            app:rotation_degrees="15">
+
+
+        </com.daprlabs.cardstack.SwipeDeck>
+
+    </com.daprlabs.cardstack.SwipeFrameLayout>
+
+    <ImageButton
+        android:id="@+id/logout"
+        android:layout_width="47dp"
+        android:layout_height="49dp"
+        android:background="#00FFFFFF"
+        android:src="@drawable/outline_exit_to_app_black_48dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
-
-    <Button
-        android:id="@+id/logout"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="28dp"
-        android:layout_marginEnd="8dp"
-        android:background="@drawable/custombutton"
-        android:text="Logout"
-        android:textColor="#FFFFFF"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/dishNationalityText" />
-
-    <Button
-        android:id="@+id/editProfile"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="28dp"
-        android:layout_marginEnd="8dp"
-        android:background="@drawable/custombutton"
-        android:text="Edit Profile"
-        android:textColor="#FFFFFF"
-        app:layout_constraintBottom_toTopOf="@+id/logout"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.501"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/dishNationalityText"
-        app:layout_constraintVertical_bias="0.205" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
