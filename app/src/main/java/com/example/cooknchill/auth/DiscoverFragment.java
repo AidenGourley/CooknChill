@@ -54,12 +54,39 @@ public class DiscoverFragment extends Fragment {
                         System.out.println("dishDescription: " + dishDescription);
                         String dishCulture = snapshot.child("dishes").child("dish0").child("dishCulture").getValue().toString();
                         System.out.println("dishCulture: " + dishCulture);
-                        // Ensure the user's own card is not created for the deck.
-                        if (!currentUserId.equals(userId))
-                        {
-                            profileCards.add(new ProfileCard(dishCulture, dishDescription, userId) );
-                        }
 
+                        // Ensure the current card is not one that the user has been matched to previously
+                        dbRef.child(currentUserId + "/matches").addListenerForSingleValueEvent(new ValueEventListener() {
+                            @Override
+                            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                                try {
+                                    if (dataSnapshot.hasChildren()) {
+                                        for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
+                                            String matchedUserId = snapshot.getKey().toString();
+                                            System.out.println("MatchedUserId" + matchedUserId);
+                                            // Ensure the user's own card is not added to the deck.
+                                            if (!(currentUserId.equals(userId)) && !(userId.equals(matchedUserId))) {
+                                                profileCards.add(new ProfileCard(dishCulture, dishDescription, userId));
+                                            }
+                                        }
+                                    }
+                                    // If the user has no matches
+                                    else
+                                    {
+                                        if (!currentUserId.equals(userId)) {
+                                            profileCards.add(new ProfileCard(dishCulture, dishDescription, userId));
+                                        }
+                                    }
+                                } catch (NullPointerException e) {
+                                    System.out.println("Database field couldn't be accessed." + e);
+                                }
+                            }
+
+                            @Override
+                            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+                            }
+                        });
                     }
                 } catch (NullPointerException e) {
                     System.out.println("Database field couldn't be accessed." + e);
@@ -111,9 +138,15 @@ public class DiscoverFragment extends Fragment {
         // Add data to the profileCards array list
         profileCards = new ArrayList<>();
         cardStack = (SwipeDeck) view.findViewById(R.id.swipe_deck);
+        TextView noProfilesMessage = (TextView) view.findViewById(R.id.noProfilesMessage);
 
-        //profileCards.add(new ProfileCard("dishCulture", "dishDescription", "BUTTcG89hGXo87aqYERku0to2Pr2") );
+        // Populate the profiles card deck
         populateDeck();
+
+        if (profileCards.isEmpty())
+        {
+            noProfilesMessage.setVisibility(View.VISIBLE);
+        }
 
         // on below line we are creating a variable for our adapter class and passing array list to it.
         final DeckAdapter adapter = new DeckAdapter(profileCards, getContext());
@@ -132,6 +165,31 @@ public class DiscoverFragment extends Fragment {
             @Override
             public void cardSwipedRight(int position) {
                 // on card swiped to right
+                String userId = profileCards.get(position).getUserId();
+
+                final DatabaseReference dbRef;
+                dbRef = FirebaseDatabase.getInstance().getReference("users/"+userId);
+
+                dbRef.addListenerForSingleValueEvent(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(DataSnapshot dataSnapshot) {
+                        // All changes must be tried in this exception handler in case an account deletion
+                        // triggers the onChange function.
+                        try {
+                            String firstName = dataSnapshot.child("firstName").getValue().toString();
+                            dbRef.child("matches").child(userId).setValue(firstName);
+
+                        } catch (NullPointerException e) {
+                            System.out.println("Database field couldn't be accessed." + e);
+                        }
+                    }
+
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError databaseError) {
+
+                    }
+                });
+
                 System.out.println("Card Swiped Right.");
             }
 
@@ -140,7 +198,7 @@ public class DiscoverFragment extends Fragment {
                 // this method is called when no card is present
                 System.out.println("No more profiles available.");
                 TextView noProfilesMessage = (TextView) view.findViewById(R.id.noProfilesMessage);
-                noProfilesMessage.setText("You've looked at all the profiles! Come back later to discover more.");
+                noProfilesMessage.setVisibility(View.VISIBLE);
             }
 
             @Override

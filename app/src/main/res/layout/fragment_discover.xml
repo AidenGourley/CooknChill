@@ -7,6 +7,7 @@
     android:layout_height="match_parent"
     android:alpha="1"
     android:background="#FFFCFD"
+    android:visibility="invisible"
     tools:context=".auth.DiscoverFragment">
 
     <!--on below line we are creating a swipe
@@ -36,14 +37,14 @@
             app:rotation_degrees="15">
 
 
-
         </com.daprlabs.cardstack.SwipeDeck>
 
         <TextView
             android:id="@+id/noProfilesMessage"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text=""
+            android:text="You've looked at all the profiles!"
+            android:textAppearance="@style/TextAppearance.AppCompat.Large"
             app:layout_constraintBottom_toBottomOf="@+id/swipe_deck"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="@+id/swipe_deck"
@@ -54,6 +55,7 @@
         android:id="@+id/logout"
         android:layout_width="51dp"
         android:layout_height="53dp"
+        android:layout_marginTop="24dp"
         android:background="#00FFFFFF"
         android:src="@drawable/outline_exit_to_app_black_48dp"
         app:layout_constraintEnd_toEndOf="parent"
