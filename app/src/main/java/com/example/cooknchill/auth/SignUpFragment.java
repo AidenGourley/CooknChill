@@ -28,7 +28,6 @@ import com.google.firebase.database.FirebaseDatabase;
 
 public class SignUpFragment extends Fragment {
 
-
     FirebaseAuth mFirebaseAuth;
     private long mLastClickTime = 0;
 

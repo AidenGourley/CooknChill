@@ -103,12 +103,10 @@ class ProfileCard {
     }
 
     // Constructor
-    public ProfileCard(String dishCulture, String dishDescription, String userId,
-                       ImageView imageView) {
+    public ProfileCard(String dishCulture, String dishDescription, String userId) {
         setUserId(userId);
         setDishCulture(dishCulture);
         setDishDescription(dishDescription);
-        setDishPictureUrl(imageView);
 
     }
 
