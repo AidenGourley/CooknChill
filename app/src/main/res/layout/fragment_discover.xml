@@ -7,7 +7,6 @@
     android:layout_height="match_parent"
     android:alpha="1"
     android:background="#FFFCFD"
-    android:visibility="invisible"
     tools:context=".auth.DiscoverFragment">
 
     <!--on below line we are creating a swipe
@@ -26,15 +25,13 @@
             android:id="@+id/swipe_deck"
             android:layout_width="405dp"
             android:layout_height="494dp"
-            android:padding="20dp"
-            app:card_spacing="10dp"
+            app:card_spacing="0dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:max_visible="3"
-            app:render_above="true"
-            app:rotation_degrees="15">
+            app:render_above="true">
 
 
         </com.daprlabs.cardstack.SwipeDeck>
@@ -53,9 +50,9 @@
 
     <ImageButton
         android:id="@+id/logout"
-        android:layout_width="51dp"
-        android:layout_height="53dp"
-        android:layout_marginTop="24dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="33dp"
         android:background="#00FFFFFF"
         android:src="@drawable/outline_exit_to_app_black_48dp"
         app:layout_constraintEnd_toEndOf="parent"

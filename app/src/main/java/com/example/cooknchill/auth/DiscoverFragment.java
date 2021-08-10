@@ -32,6 +32,8 @@ public class DiscoverFragment extends Fragment {
 
     private SwipeDeck cardStack;
     private ArrayList<ProfileCard> profileCards;
+    private DeckAdapter adapter;
+    private String supportAccountID = "unLh8Ui7xgXE576BVyCr11cgN7f1";
 
     public void populateDeck()
     {
@@ -46,37 +48,45 @@ public class DiscoverFragment extends Fragment {
             public void onDataChange(DataSnapshot dataSnapshot) {
                 // All changes must be tried in this exception handler in case an account deletion
                 // triggers the onChange function.
+                profileCards.clear();
+
                 try {
                     for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
                         String userId = snapshot.child("uid").getValue().toString();
-                        System.out.println("userId: " + userId);
-                        String dishDescription = snapshot.child("dishes").child("dish0").child("dishDescription").getValue().toString();
-                        System.out.println("dishDescription: " + dishDescription);
-                        String dishCulture = snapshot.child("dishes").child("dish0").child("dishCulture").getValue().toString();
-                        System.out.println("dishCulture: " + dishCulture);
+                        String dishDescription = snapshot.child("dishes/dish0/dishDescription").getValue().toString();
+                        String dishCulture = snapshot.child("dishes/dish0/dishCulture").getValue().toString();
 
                         // Ensure the current card is not one that the user has been matched to previously
                         dbRef.child(currentUserId + "/matches").addListenerForSingleValueEvent(new ValueEventListener() {
                             @Override
                             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                                 try {
+                                    boolean addCard = true;
                                     if (dataSnapshot.hasChildren()) {
+
                                         for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
                                             String matchedUserId = snapshot.getKey().toString();
                                             System.out.println("MatchedUserId" + matchedUserId);
-                                            // Ensure the user's own card is not added to the deck.
-                                            if (!(currentUserId.equals(userId)) && !(userId.equals(matchedUserId))) {
-                                                profileCards.add(new ProfileCard(dishCulture, dishDescription, userId));
+                                            // Ensure the card is not a matched user.
+                                            if ((userId.equals(matchedUserId))) {
+                                                addCard = false;
                                             }
                                         }
                                     }
-                                    // If the user has no matches
-                                    else
+                                    // Ensure the card is not the support account or the current user
+                                    if (currentUserId.equals(userId) &&
+                                            (userId.equals(supportAccountID)))
                                     {
-                                        if (!currentUserId.equals(userId)) {
-                                            profileCards.add(new ProfileCard(dishCulture, dishDescription, userId));
-                                        }
+                                        addCard = false;
                                     }
+
+                                    // If the card is OK to add
+                                    if (addCard)
+                                    {
+                                        profileCards.add(new ProfileCard(dishCulture, dishDescription, userId));
+                                        System.out.println("CARD ADDED");
+                                    }
+
                                 } catch (NullPointerException e) {
                                     System.out.println("Database field couldn't be accessed." + e);
                                 }
@@ -101,8 +111,9 @@ public class DiscoverFragment extends Fragment {
 
         // For an unknown reason, the profileCards array requires one addition of a ProfileCard object outside of the 'for loop' in order to
         // display on the app properly.
-        profileCards.add(new ProfileCard("dishCulture", "dishDescription", "BUTTcG89hGXo87aqYERku0to2Pr2") );
-
+        profileCards.add(new ProfileCard("Discover new dishes!",
+                "Swipe right to show you're interested! \n " +
+                        "Swipe left to politely decline!", "unLh8Ui7xgXE576BVyCr11cgN7f1") );
     }
 
     // Constructor
@@ -138,20 +149,15 @@ public class DiscoverFragment extends Fragment {
         // Add data to the profileCards array list
         profileCards = new ArrayList<>();
         cardStack = (SwipeDeck) view.findViewById(R.id.swipe_deck);
-        TextView noProfilesMessage = (TextView) view.findViewById(R.id.noProfilesMessage);
 
         // Populate the profiles card deck
+        FirebaseDatabase.getInstance().getReference("users").get();
+
+
         populateDeck();
-
-        if (profileCards.isEmpty())
-        {
-            noProfilesMessage.setVisibility(View.VISIBLE);
-        }
-
         // on below line we are creating a variable for our adapter class and passing array list to it.
-        final DeckAdapter adapter = new DeckAdapter(profileCards, getContext());
+        adapter = new DeckAdapter(profileCards, getContext());
 
-        // on below line we are setting adapter to our card stack.
         cardStack.setAdapter(adapter);
 
         // on below line we are setting event callback to our card stack.
@@ -165,10 +171,11 @@ public class DiscoverFragment extends Fragment {
             @Override
             public void cardSwipedRight(int position) {
                 // on card swiped to right
-                String userId = profileCards.get(position).getUserId();
+                String matchedUserId = profileCards.get(position).getUserId();
+                String currentUserId = mFirebaseAuth.getCurrentUser().getUid();
 
                 final DatabaseReference dbRef;
-                dbRef = FirebaseDatabase.getInstance().getReference("users/"+userId);
+                dbRef = FirebaseDatabase.getInstance().getReference("users/"+currentUserId);
 
                 dbRef.addListenerForSingleValueEvent(new ValueEventListener() {
                     @Override
@@ -177,8 +184,9 @@ public class DiscoverFragment extends Fragment {
                         // triggers the onChange function.
                         try {
                             String firstName = dataSnapshot.child("firstName").getValue().toString();
-                            dbRef.child("matches").child(userId).setValue(firstName);
-
+                            if (!(matchedUserId.equals(supportAccountID))) {
+                                dbRef.child("matches").child(matchedUserId).setValue(matchedUserId);
+                            }
                         } catch (NullPointerException e) {
                             System.out.println("Database field couldn't be accessed." + e);
                         }
@@ -213,6 +221,5 @@ public class DiscoverFragment extends Fragment {
                 System.out.println("Card Moved Up.");
             }
         });
-
     }
 }

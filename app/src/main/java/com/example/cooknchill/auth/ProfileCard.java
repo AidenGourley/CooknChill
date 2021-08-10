@@ -73,6 +73,21 @@ class ProfileCard {
         }
     }
 
+    // Class to download images form the Picture URL and load them into the ImageView
+    /*private void DownloadImageTask(ImageView bmImage, String... urls) {
+
+        String urldisplay = urls[0];
+        Bitmap mIcon11 = null;
+        try {
+            InputStream in = new java.net.URL(urldisplay).openStream();
+            mIcon11 = BitmapFactory.decodeStream(in);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        bmImage.setImageBitmap(mIcon11);
+    }*/
+
     // Get the dish picture URL and call the DownloadImageTask to load them into the ImageView
     public void setDishPictureUrl(ImageView imageView) {
 
@@ -88,6 +103,7 @@ class ProfileCard {
                 try {
                     String dishPictureUrl = dataSnapshot.child("dishes").child("dish0").child("dishPic0").getValue().toString();
                     //Glide.with(getActivity()).load(dishPictureUrl).into(imageView);
+                    //DownloadImageTask(imageView, dishPictureUrl);
                     new DownloadImageTask(imageView).execute(dishPictureUrl);
                     System.out.println("Dish Picture URL: " + dishPictureUrl);
                 } catch (NullPointerException e) {
